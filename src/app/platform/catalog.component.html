@@ -1,7 +1,6 @@
 <main>
     <h1>Category List:</h1>
     <div *ngFor ="let category of categorys">
-        <h2><a [routerLink] = "['/catalog',category.id]">{{category.description}}({{category.offersCount}})</a></h2> 
-
+        <h2><a [routerLink] = "['/catalog',category.id]">{{category.description}}({{category.offersCount}})</a></h2>
     </div>
 </main>
