@@ -1,0 +1,14 @@
+<head>
+   
+</head>
+<body>
+    <main>
+        
+       <div *ngIf="user == undefined">
+           Please authorise first
+       </div>
+       <div *ngIf="user != undefined">
+            <load [user] ="user"></load>
+        </div>
+    </main>
+</body>
