@@ -1,0 +1,12 @@
+<main>
+   <h2>category {{categoryName}}</h2>
+   <div *ngFor ="let offer of objOffers">
+        <p>price: {{offer.price}}</p>
+        <p>name: {{offer.name}}</p>
+        <p>Description: {{offer.description}}</p>
+        <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p>
+        <p>Phone: {{offer.user.phoneNumber}}</p>
+        <a [routerLink] = "['/offerdetail',offer.id]">Show more</a>
+        <hr>
+   </div>
+</main>
