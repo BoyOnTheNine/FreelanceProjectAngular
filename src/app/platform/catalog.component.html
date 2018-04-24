@@ -1,7 +1,8 @@
 <main>
     <h1>Category List:</h1>
-    <div *ngFor ="let category of categorys">
-        <h2><a [routerLink] = "['/catalog',category.id]">{{category.description}}({{category.offersCount}})</a></h2> 
-
+    <div class="list-group col-md-3">
+        <div *ngFor="let category of categorys">
+            <a class="list-group-item list-group-item-action" [routerLink]="['/catalog',category.id]">{{category.description}} <span class="badge badge-info">{{category.offersCount}}</span></a>
+        </div>
     </div>
 </main>
