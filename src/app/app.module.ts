@@ -1,6 +1,9 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 
 
 import {RouterModule} from '@angular/router';
@@ -16,11 +19,13 @@ import { CategoryService } from './platform/category.service';
 import { CategoryInfoComponent } from './catalog-info/category-info.component';
 import { OfferDetailComponent } from './offer-detail/offer-deatil.component';
 import { RegisterComponent } from './register/register.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 
 
 @NgModule({
     imports:     [
+        NgbModule.forRoot(),
         BrowserModule,
         FormsModule,
         RouterModule.forRoot([
@@ -42,7 +47,8 @@ import { RegisterComponent } from './register/register.component';
     LoadUserComponent,
     CategoryInfoComponent,
     OfferDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavigationBarComponent
     ],
     providers: [AuthoriseService,OfferService, CategoryService],
     bootstrap: [ AppComponent ]
