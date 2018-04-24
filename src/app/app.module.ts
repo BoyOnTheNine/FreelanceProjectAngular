@@ -19,6 +19,7 @@ import { CategoryService } from './platform/category.service';
 import { CategoryInfoComponent } from './catalog-info/category-info.component';
 import { OfferDetailComponent } from './offer-detail/offer-deatil.component';
 import { RegisterComponent } from './register/register.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 
 
@@ -46,7 +47,8 @@ import { RegisterComponent } from './register/register.component';
     LoadUserComponent,
     CategoryInfoComponent,
     OfferDetailComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavigationBarComponent
     ],
     providers: [AuthoriseService,OfferService, CategoryService],
     bootstrap: [ AppComponent ]

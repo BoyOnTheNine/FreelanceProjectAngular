@@ -2,14 +2,17 @@
 
 </head>
 <body>
-<div class="topnav">
+<!-- <div class="topnav">
         <nav>
              <a routerLink="/home">Home</a>
              <a routerLink="/catalog">Catalog</a>
              <a routerLink ="/authorise">Log in</a>
-            </nav>
-      </div> 
-<main>
+        </nav>
+      </div>  -->
+      <div class="navigation">
+        <app-navigation-bar></app-navigation-bar>
+    </div>
+<div class="content">
     <router-outlet></router-outlet>
-</main>
+</div>
 </body>
