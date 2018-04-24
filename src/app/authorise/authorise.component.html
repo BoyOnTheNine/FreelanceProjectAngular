@@ -3,15 +3,14 @@
     <div *ngIf="curUser == undefined">
         <label>Login</label>
         <input type="text" [(ngModel)]="login"/>
-
-        <label>Password</label>
+        <label for="password">Password</label>
         <input type="password" [(ngModel)]="password" />
-        <button (click)="onAuthoriseUser()">Log in</button>
-        <button (click)="onRegister()">Sign up</button>
+        <button type="button" class="btn btn-primary" (click)="onAuthoriseUser()">Log in</button>
+        <button type="button" class="btn btn-primary" (click)="onRegister()">Sign up</button>
     </div>
     <div *ngIf="curUser != undefined">
             <label>You'r already login</label>
-            <button (click)=" onDeauthoriseUser()">Log Out</button>
+            <button type="button" class="btn btn-primary" (click)="onDeauthoriseUser()">Log Out</button>
     </div>
     
      
