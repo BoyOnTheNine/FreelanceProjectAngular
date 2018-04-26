@@ -8,7 +8,8 @@ import {Router} from '@angular/router';
       
 @Component({
     selector: 'auth',
-    templateUrl: 'authorise.component.html'
+    templateUrl: 'authorise.component.html',
+    styleUrls: ['authorize.component.css']
 
 })
 

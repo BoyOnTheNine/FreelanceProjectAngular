@@ -1,16 +1,22 @@
-<main>
-    <div *ngIf="curUser == undefined">
-        <label>Login</label>
-        <input type="text" [(ngModel)]="login" />
-        <label>Password</label>
-        <input type="password" [(ngModel)]="password" />
-        <button type="button" class="btn btn-primary" (click)="onAuthoriseUser()">Log in</button>
-        <button type="button" class="btn btn-primary" (click)="onRegister()">Sign up</button>
+<div class="container">
+    <div class="row">
+        <div class="main">
+            <h3>Please Log In, or
+                <a href="#">Sign Up</a>
+            </h3>
+            <form role="form">
+                <div class="form-group">
+                    <label for="inputUsernameEmail">Username or email</label>
+                    <input type="text" class="form-control" id="inputUsernameEmail">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="inputPassword">
+                </div>
+                <button type="submit" class="btn btn btn-primary">
+                    Log In
+                </button>
+            </form>
+        </div>
     </div>
-    <div *ngIf="curUser != undefined">
-        <label>You're already logged in</label>
-        <button type="button" class="btn btn-primary" (click)="onDeauthoriseUser()">Log Out</button>
-    </div>
-
-
-</main>
+</div>
