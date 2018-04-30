@@ -20,7 +20,7 @@ export class HomeComponent  implements DoCheck{
 
      ngDoCheck()
      {
-          this.user = this.authService.GetUser();
+          this.user = this.authService.GetAuthUser();
      }
  
 }
