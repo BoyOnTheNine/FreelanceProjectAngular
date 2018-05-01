@@ -24,16 +24,16 @@ export class AuthoriseComponent implements DoCheck {
 
     onAuthoriseUser(){
 
-       this.curUser = this.authService.CheckUser(this.login,this.password);
+       this.curUser = this.authService.LogInUser(this.login,this.password);
     }
 
     onDeauthoriseUser(){
-        this.curUser = undefined;
+      
         this.authService.LogOutUser();
     }
     
     ngDoCheck(){
-        this.curUser = this.authService.GetUser();
+       this.curUser = this.authService.GetAuthUser();
     }
 
     onRegister(){

@@ -15,18 +15,24 @@ import {AuthoriseService} from '../authorise/authorise.service';
 export class RegisterComponent implements OnInit  { 
     
      user: User;
-     allSkills: Skill[];
+      skills : Skill[] = [
+        {id: 1, name: ".Net"},
+        {id: 2, name: "JS"},
+        {id: 3, name: "Java"},
+        {id: 4, name: "Clean"}
+    ]
      userSkill :Skill = skills[0];
+
 
      constructor(private auth: AuthoriseService,private router: Router){}
 
      ngOnInit(){
-            this.allSkills = skills;
+        
         
      }
 
      onClick(){
-        this.auth.CreateUser(this.user);
+       
         this.router.navigateByUrl('/home');
      }
     

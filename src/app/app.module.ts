@@ -20,6 +20,8 @@ import { CategoryInfoComponent } from './catalog-info/category-info.component';
 import { OfferDetailComponent } from './offer-detail/offer-deatil.component';
 import { RegisterComponent } from './register/register.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { UserOfferActivityComponent } from './user-offer-activity/user-offer-activity.component';
+import { UserService } from './user-service/user.service';
 
 
 
@@ -34,6 +36,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
             {path: 'catalog',component: CatalogComponent},
             {path: 'catalog/:id',component: CategoryInfoComponent},
             {path: 'offerdetail/:id',component: OfferDetailComponent},
+            {path: 'editOffer/:id',component: UserOfferActivityComponent},
             {path: 'register',component: RegisterComponent},
             {path: '' ,redirectTo:'authorise' ,pathMatch: 'full'},
             {path:'**',component:NotFoundComponent}
@@ -48,9 +51,10 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     CategoryInfoComponent,
     OfferDetailComponent,
     RegisterComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    UserOfferActivityComponent
     ],
-    providers: [AuthoriseService,OfferService, CategoryService],
+    providers: [UserService,AuthoriseService,OfferService, CategoryService],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
