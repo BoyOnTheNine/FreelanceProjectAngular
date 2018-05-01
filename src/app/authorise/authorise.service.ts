@@ -1,35 +1,37 @@
 import { Injectable } from "@angular/core";
 import {User} from '../shared/user';
-import {users} from '../fake-storage/fake-users'
+import { UserService } from "../user-service/user.service";
 
 
-Injectable()
+
+@Injectable()
 export class AuthoriseService{
-    user: User = undefined;
+    authUser: User = undefined;
 
-    CheckUser(login: string, password: string) : User{
-        this.user = users.find(log => log.login == login);
-        return this.user;
+      constructor(private usrService: UserService){}
+
+    LogInUser(login: string, password: string) : User{
+       let users = this.usrService.GetAllUsers();
+       let user = users.find(usr => usr.login === login);
+       if(user!= undefined){
+           this.authUser = user;
+       }    
+       return user
     }
 
-    SetUser(user :User){
-        this.user = user;
+    
+    CheckOnLogin(): boolean{
+        if(this.authUser == undefined)
+            return false;
+        return true;
     }
-
+    
     LogOutUser(){
-        this.user = undefined;
+        this.authUser = undefined;
     }
 
-    GetUser() : User{
-         return this.user;
-    }
-
-    findUserByOfferId(id: Number) {
-     
-    }
-
-    CreateUser(user :User){
-           users.push(user);
+    GetAuthUser(): User{
+        return this.authUser;
     }
 
 

@@ -26,11 +26,17 @@
         </div>
         <div>
             <label>Skill</label>
-
+            
+            <select id="skill" required>
+                <option *ngFor = "let skill of allSkills" >{{skill.name}} </option>
+                <option>lol</option>
+            </select>
         </div>
         <div>
 
             <button (click)=" onClick()">OK</button>
         </div>
+      
     </form>
+    
 </main>
