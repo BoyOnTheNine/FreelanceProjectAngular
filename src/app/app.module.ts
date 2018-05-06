@@ -22,6 +22,7 @@ import { UserOfferActivityComponent } from './user-offer-activity/user-offer-act
 import { UserService } from './user-service/user.service';
 import { LoginComponent } from './authorise/login.component';
 import { AuthenticationService } from './authorise/authentication.service';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -34,7 +35,7 @@ import { AuthenticationService } from './authorise/authentication.service';
         RouterModule.forRoot([
             {path: 'home',component: HomeComponent},
             {path: 'authorise', component: LoginComponent},
-            {path: 'catalog',component: CatalogComponent},
+            {path: 'catalog',component: CatalogComponent, canActivate:[AuthGuard]},
             {path: 'catalog/:id',component: CategoryInfoComponent},
             {path: 'offerdetail/:id',component: OfferDetailComponent},
             {path: 'editOffer/:id',component: UserOfferActivityComponent},
@@ -55,7 +56,7 @@ import { AuthenticationService } from './authorise/authentication.service';
     NavigationBarComponent,
     UserOfferActivityComponent
     ],
-    providers: [UserService,AuthenticationService, OfferService, CategoryService],
+    providers: [UserService, AuthGuard, AuthenticationService, OfferService, CategoryService],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
