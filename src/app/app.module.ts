@@ -2,7 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpModule } from '@angular/http';
 
 
 
@@ -10,8 +10,6 @@ import {RouterModule} from '@angular/router';
 import { NotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
 import {CatalogComponent} from './platform/catalog.component';
-import {AuthoriseComponent} from './authorise/authorise.component';
-import { AuthoriseService } from './authorise/authorise.service';
 import {FormsModule} from '@angular/forms';
 import {LoadUserComponent} from './loadUserInfo/load-user-info.component';
 import { OfferService } from './offer/offer.service';
@@ -22,6 +20,9 @@ import { RegisterComponent } from './register/register.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { UserOfferActivityComponent } from './user-offer-activity/user-offer-activity.component';
 import { UserService } from './user-service/user.service';
+import { LoginComponent } from './authorise/login.component';
+import { AuthenticationService } from './authorise/authentication.service';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -30,10 +31,11 @@ import { UserService } from './user-service/user.service';
         NgbModule.forRoot(),
         BrowserModule,
         FormsModule,
+        HttpModule,
         RouterModule.forRoot([
             {path: 'home',component: HomeComponent},
-            {path: 'authorise', component: AuthoriseComponent},
-            {path: 'catalog',component: CatalogComponent},
+            {path: 'authorise', component: LoginComponent},
+            {path: 'catalog',component: CatalogComponent, canActivate:[AuthGuard]},
             {path: 'catalog/:id',component: CategoryInfoComponent},
             {path: 'offerdetail/:id',component: OfferDetailComponent},
             {path: 'editOffer/:id',component: UserOfferActivityComponent},
@@ -46,7 +48,7 @@ import { UserService } from './user-service/user.service';
     NotFoundComponent,
     HomeComponent,
     CatalogComponent,
-    AuthoriseComponent,
+    LoginComponent,
     LoadUserComponent,
     CategoryInfoComponent,
     OfferDetailComponent,
@@ -54,7 +56,7 @@ import { UserService } from './user-service/user.service';
     NavigationBarComponent,
     UserOfferActivityComponent
     ],
-    providers: [UserService,AuthoriseService,OfferService, CategoryService],
+    providers: [UserService, AuthGuard, AuthenticationService, OfferService, CategoryService],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

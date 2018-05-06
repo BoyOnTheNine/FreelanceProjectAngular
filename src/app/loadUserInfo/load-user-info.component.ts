@@ -5,7 +5,8 @@ import {OfferService} from '../offer/offer.service';
 
 @Component({
     selector: "load",
-    templateUrl: 'load-user-info.component.html'
+    templateUrl: 'load-user-info.component.html',
+    styleUrls: ['load-user-info.component.css']
 })
 export class LoadUserComponent implements OnInit{
     @Input() user: User;

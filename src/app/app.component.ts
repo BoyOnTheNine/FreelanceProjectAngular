@@ -4,7 +4,7 @@ import {HomeComponent} from './home/home.component'
 
 import {CatalogComponent} from './platform/catalog.component';
 
-import {AuthoriseComponent} from './authorise/authorise.component';
+import {LoginComponent} from './authorise/login.component';
 
 import {LoadUserComponent} from './loadUserInfo/load-user-info.component';
 
