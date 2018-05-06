@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Offer} from '../shared/offer';
 import { OfferService } from '../offer/offer.service';
-import { AuthoriseService } from '../authorise/authorise.service';
 import {LoadUserComponent} from '../loadUserInfo/load-user-info.component';
 import { User } from '../shared/user';
 

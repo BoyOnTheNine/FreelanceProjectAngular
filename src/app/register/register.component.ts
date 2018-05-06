@@ -4,7 +4,6 @@ import { User } from '../shared/user';
 import {skills} from '../fake-storage/fake-Skills';
 import {Skill} from '../shared/skill'
 import {FormsModule} from '@angular/forms';
-import {AuthoriseService} from '../authorise/authorise.service';
 
     
 @Component({
@@ -24,7 +23,7 @@ export class RegisterComponent implements OnInit  {
      userSkill :Skill = skills[0];
 
 
-     constructor(private auth: AuthoriseService,private router: Router){}
+     constructor(private router: Router){}
 
      ngOnInit(){
         

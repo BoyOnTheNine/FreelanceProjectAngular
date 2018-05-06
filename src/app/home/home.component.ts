@@ -2,7 +2,6 @@ import { Component, OnChanges, DoCheck } from '@angular/core';
 
 import {User} from '../shared/user';
 
-import {AuthoriseService} from '../authorise/authorise.service';
 import {LoadUserComponent} from '../loadUserInfo/load-user-info.component';
 
       
@@ -14,13 +13,10 @@ import {LoadUserComponent} from '../loadUserInfo/load-user-info.component';
 
 export class HomeComponent  implements DoCheck{ 
     
-    user: User = undefined;
-
-    constructor(private authService: AuthoriseService){}
+    constructor(){}
 
      ngDoCheck()
      {
-          this.user = this.authService.GetAuthUser();
      }
  
 }
