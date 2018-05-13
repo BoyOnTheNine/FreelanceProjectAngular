@@ -18,4 +18,6 @@ export class UserService{
     CreateUser(user : User){
         users.push(user);
     }
+
+    
 }
