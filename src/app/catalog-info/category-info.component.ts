@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Offer} from '../shared/offer';
 import { OfferService } from '../offer/offer.service';
+import { CategoryService } from '../platform/category.service';
 
     
 @Component({
@@ -12,10 +13,12 @@ import { OfferService } from '../offer/offer.service';
 
 export class CategoryInfoComponent implements OnInit  { 
     
-    objOffers: Offer[] = undefined;
+    objOffers: Offer[] = [];
     categoryName: string;
 
-    constructor(private route: ActivatedRoute, private offService: OfferService){}
+    constructor(private route: ActivatedRoute, 
+        private offService: OfferService, 
+        private categoryService: CategoryService){}
 
     ngOnInit(){
        var id = +this.route.snapshot.params['id'];
@@ -24,7 +27,11 @@ export class CategoryInfoComponent implements OnInit  {
     }
 
     getOffer(Id: number){
-        this.objOffers = this.offService.findOffer(Id);
+        this.offService.getAllOffers()
+        .subscribe(offers => {this.objOffers = offers;
+            console.log('this.allOffers = ', offers);
+        });
+        console.log('this.objOffers = ', this.objOffers);
     }
 
     getCatName(Id: number){

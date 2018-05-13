@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Category } from '../shared/category';
 import { categorys } from '../fake-storage/fake-category';
-import { OfferService } from '../offer/offer.service';
 import { Offer } from '../shared/offer';
 import { Http, RequestOptions, Headers, Response } from "@angular/http";
 import { AuthenticationService } from "../authorise/authentication.service";
@@ -10,15 +9,15 @@ import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class CategoryService {
-    allCategorys: Category[];
+    allCategories: Category[];
     currOff: Offer[];
-    constructor(private offServ: OfferService,
+    constructor(
         private http: Http,
         private authService: AuthenticationService
     ) { }
 
     updateCategory() {
-        this.allCategorys = categorys;
+        this.getCategories().subscribe(categories =>{this.allCategories = categories});
     }
 
     getCategories(): Observable<Category[]> {
@@ -34,16 +33,16 @@ export class CategoryService {
 
     private countOffersForCategory() {
 
-        this.offServ.getAllOffers().subscribe(currOff => {
-            this.currOff = currOff;
-            console.log('this.currOff = ' + this.currOff);
-        });
-        for (let category of this.allCategorys) {
-            category.offersCount = 0;
-            for (let offer of this.currOff) {
-                let curCat = offer.category.filter(c => c.id == category.id)
-                category.offersCount += curCat.length;
-            }
-        }
+        // this.offServ.getAllOffers().subscribe(currOff => {
+        //     this.currOff = currOff;
+        //     console.log('this.currOff = ' + this.currOff);
+        // });
+        // for (let category of this.allCategories) {
+        //     category.offersCount = 0;
+        //     for (let offer of this.currOff) {
+        //         let curCat = offer.categories.filter(c => c.id == category.id)
+        //         category.offersCount += curCat.length;
+        //     }
+        // }
     }
 }

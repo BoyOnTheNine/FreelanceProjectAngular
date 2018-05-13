@@ -1,6 +1,5 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { Offer } from "../shared/offer";
-import {offers} from "../fake-storage/fake-offers"
 import { User } from "../shared/user";
 import {CategoryService} from '../platform/category.service';
 import { Category } from "../shared/category";
@@ -11,12 +10,19 @@ import { Observable }     from 'rxjs/Observable';
 
 
 @Injectable()
-export class OfferService{
-  
+export class OfferService implements OnInit{
     allOffers: Offer[];
     CatService: CategoryService;
     
-    constructor(private http: Http, private authService: AuthenticationService){}
+    constructor(private http: Http, 
+        private authService: AuthenticationService,
+        private categoryService: CategoryService
+    ){
+    }
+
+    ngOnInit(){
+        this.getAllOffers();
+    }
 
     getUserOffers(user: User) : Offer[] {
       this.updateOffers();
@@ -24,7 +30,7 @@ export class OfferService{
     }
 
     updateOffers(){
-        this.allOffers = offers;
+        // this.allOffers = offers;
     }
 
     getAllOffers() : Observable<Offer[]>{
@@ -37,10 +43,18 @@ export class OfferService{
         .map((response: Response) =>response.json());
     }
 
-    findOffer(id: number) : Offer[]{
-        this.updateOffers();
+    findOffer(id: number):Offer[]{
+        this.getAllOffers();
+        this.categoryService.updateCategory();
+        return this.allOffers;
+        // this.updateOffers();
        
-        return this.allOffers.filter(off => off.category.find(c => c.id == id));
+        // return this.allOffers.filter(off => off.category.find(c => c.id == id));
+        // let headers = new Headers({'Authorization':'Bearer ' + this.authService.token
+        // });
+        // let options = new RequestOptions({headers: headers});
+        // return this.http.get('http://localhost:8080/api/v1/offers/' + id, options)
+        // .map((response: Response) =>response.json());
     }
 
     getCatalogNameById(id: Number): string{
