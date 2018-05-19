@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authorise/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor() { }
+    public login: string;
+
+  constructor(private authService: AuthenticationService, private router: Router) {
+      this.authService.authChanged.subscribe(() => {
+          this.login = this.authService.loginString;
+        })
+   }
 
   ngOnInit() {
+      this.login = null;
   }
 
 }

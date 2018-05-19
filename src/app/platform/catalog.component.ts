@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Category} from '../shared/category';
 import {CategoryService} from './category.service';
 import {ActivatedRoute} from '@angular/router';
-
+import { Observable }     from 'rxjs/Observable';
 
 @Component({
     selector: 'catalog',
@@ -11,12 +11,14 @@ import {ActivatedRoute} from '@angular/router';
 })
 
 export class CatalogComponent implements OnInit{
-    categorys: Category[];
+    categories: Category[];
 
     constructor(private categoryService: CategoryService){}
 
     ngOnInit(){
-        this.categorys =  this.categoryService.getCategorys();
+        this.categoryService.getCategories().subscribe(categories => {
+            this.categories = categories;
+            console.log('this.categories = ' + this.categories)});
     }
 
 }

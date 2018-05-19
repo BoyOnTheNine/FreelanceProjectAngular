@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
-import {User} from '../shared/user';
+import { User } from '../shared/user';
 
-import {AuthenticationService} from './authentication.service';
-import {Router} from '@angular/router';
+import { AuthenticationService } from './authentication.service';
+import { Router } from '@angular/router';
 
       
 @Component({
     selector: 'auth',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.css']
-
 })
 
 export class LoginComponent implements OnInit {
@@ -43,5 +42,9 @@ export class LoginComponent implements OnInit {
               this.loading = false;
               this.error = error;
             });
+    }
+
+    onRegister(){
+        this.router.navigateByUrl("/register");
     }
 }

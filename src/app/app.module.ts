@@ -35,6 +35,7 @@ import { AuthGuard } from './guards/auth.guard';
         RouterModule.forRoot([
             {path: 'home',component: HomeComponent},
             {path: 'authorise', component: LoginComponent},
+            {path: 'userInfo', component: LoadUserComponent},
             {path: 'catalog',component: CatalogComponent, canActivate:[AuthGuard]},
             {path: 'catalog/:id',component: CategoryInfoComponent},
             {path: 'offerdetail/:id',component: OfferDetailComponent},
