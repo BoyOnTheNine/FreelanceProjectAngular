@@ -23,7 +23,7 @@ export class CategoryInfoComponent implements OnInit  {
     ngOnInit(){
        var id = +this.route.snapshot.params['id'];
        this.getOffer(id);
-    
+        this.getCatName(id);
     }
 
     getOffer(Id: number){

@@ -58,8 +58,7 @@ export class OfferService implements OnInit{
     }
 
     getCatalogNameById(id: Number): string{
-          return 'lol';
-        
+        return this.categoryService.allCategories.find(o => o.id == id).name;
     }
 
     getOfferById(id : Number): Offer{
