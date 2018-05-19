@@ -9,16 +9,12 @@ import { Router } from '@angular/router';
 })
 export class NavigationBarComponent implements OnInit {
 
-    public login: string;
 
   constructor(private authService: AuthenticationService, private router: Router) {
-      this.authService.authChanged.subscribe(() => {
-          this.login = this.authService.loginString;
-        })
+      
    }
 
   ngOnInit() {
-      this.login = null;
   }
 
 }
