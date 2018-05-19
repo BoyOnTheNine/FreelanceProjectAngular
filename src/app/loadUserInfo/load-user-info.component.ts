@@ -19,7 +19,7 @@ export class LoadUserComponent implements OnInit{
         private authService: AuthenticationService) {}
 
     ngOnInit(){
-        this.userService.GetUserByLogin("userlogin").subscribe(data => {
+        this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
             this.user = data;
             console.log('this.user = ' + this.user)});
       this.offers =  this.offerService.getUserOffers(this.user);
