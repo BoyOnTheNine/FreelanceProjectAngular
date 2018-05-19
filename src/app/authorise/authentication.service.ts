@@ -9,6 +9,7 @@ export class AuthenticationService {
     public token: string;
     private readonly serverUrl = 'http://localhost:8080';
     @Output() loginString: string;
+    @Output() logged = false;
     @Output() authChanged = new EventEmitter<string>();
     constructor(private http: Http) {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -31,6 +32,7 @@ export class AuthenticationService {
                     localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
                     this.authChanged.emit(username);
                     this.loginString = username;
+                    this.logged = true;
                     // return true to indicate successful login
                     return true;
                 } else {
@@ -42,6 +44,7 @@ export class AuthenticationService {
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
+        this.logged = false;
         this.loginString = null;
         this.authChanged.emit(null);
         localStorage.removeItem('currentUser');

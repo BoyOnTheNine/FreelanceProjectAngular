@@ -16,8 +16,9 @@
         </ul>
         <ul class="navbar-nav ml-md-auto">
             <li class="nav-item">
-                <button type="button" class="btn btn-primary" routerLink="/authorise">Log in</button>
-                <button type="button" class="btn btn-primary" routerLink="/userInfo">User Info</button>
+                <button type="button" *ngIf="!authService.logged" class="btn btn-primary" routerLink="/authorise">Log in</button>
+                <button type="button" *ngIf="authService.logged" class="btn btn-primary" routerLink="/authorise">Log out</button>
+                <button type="button" *ngIf="authService.logged" class="btn btn-primary" routerLink="/userInfo">User Info</button>
             </li>
         </ul>
     </div>
