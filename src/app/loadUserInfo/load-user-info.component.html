@@ -1,4 +1,4 @@
-<main>
+<!-- <main>    
     <h2>My Info</h2>
     <div>
         <p> id: {{user.id}}</p>
@@ -29,5 +29,46 @@
             </div>
         </div>
     </div>
-    <a  [routerLink]="['/editOffer',user.id]">Add offer</a>
-</main>
+    <a [routerLink]="['/editOffer',user.id]">Add offer</a>
+</main> -->
+<form class="container col-md-4">
+    <h2>User Info</h2>
+
+    <div class="form-group">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="firstName">Last name</label>
+        <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="login">Login</label>
+        <input type="text" class="form-control" name="login" [(ngModel)]="user.login" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input type="text" class="form-control" name="phone" [(ngModel)]="user.phoneNumber" placeholder="N/A" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="phone">Country</label>
+        <input type="text" class="form-control" name="country" [(ngModel)]="user.country" placeholder="N/A" readonly/>
+    </div>
+    <div>
+        <label>Rating</label>
+        <ng-template #t let-fill="fill">
+            <span class="star" [class.full]="fill === 100">
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+            </span>
+        </ng-template>
+        <ngb-rating [(rate)]="user.rating" [starTemplate]="t" [readonly]="true" max="5">
+        </ngb-rating>
+        <hr>
+        <pre>Rate: <b>{{user.rating}}</b></pre>
+    </div>
+    <div>
+
+        <button class="btn btn-primary" (click)=" onClick()">Edit information</button>
+    </div>
+
+</form>
