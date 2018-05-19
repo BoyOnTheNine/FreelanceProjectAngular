@@ -8,7 +8,7 @@ export class AuthenticationService {
     
     public token: string;
     private readonly serverUrl = 'http://localhost:8080';
-    public loginString: string;
+    loginString: string;
     @Output() authChanged = new EventEmitter<string>();
     constructor(private http: Http) {
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));

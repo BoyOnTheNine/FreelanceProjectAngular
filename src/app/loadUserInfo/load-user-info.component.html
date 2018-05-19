@@ -1,33 +1,41 @@
-<main>
-    <h2>My Info</h2>
-    <div>
-        <p> id: {{user.id}}</p>
-        <p> name: {{user.firstName}}</p>
-        <p> last Name: {{user.lastName}}</p>
-        <p> phone: {{user.phoneNumber}}</p>
-        <p> country: {{user.country}}</p>
-        <p> rating: {{user.rating}}</p>
-        <h3>My skills</h3>
+<form class="container col-md-4">
+    <h2>User Info</h2>
+
+    <div class="form-group">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="firstName">Last name</label>
+        <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="login">Login</label>
+        <input type="text" class="form-control" name="login" [(ngModel)]="user.login" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input type="text" class="form-control" name="phone" [(ngModel)]="user.phoneNumber" placeholder="N/A" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="phone">Country</label>
+        <input type="text" class="form-control" name="country" [(ngModel)]="user.country" placeholder="N/A" readonly/>
     </div>
     <div>
-        <ul>
-            <li *ngFor="let skill of user.skills">{{skill.name}}</li>
-        </ul>
+        <label>Rating</label>
+        <ng-template #t let-fill="fill">
+            <span class="star" [class.full]="fill === 100">
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+            </span>
+        </ng-template>
+        <ngb-rating [(rate)]="user.rating" [starTemplate]="t" [readonly]="true" max="5">
+        </ngb-rating>
+        <hr>
+        <pre>Rate: <b>{{user.rating}}</b></pre>
     </div>
-    <h3>My current offers</h3>
-    <div class="row card-group" style="margin: 1rem">
-        <div class="col-md-3" *ngFor="let offer of offers">
-            <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                    <p>Offer number: {{offer.id}}</p>
-                    <p> name: {{offer.name}}</p>
-                    <p> price: {{offer.price}}</p>
-                    <p> date: {{offer.date}}</p>
-                    <p> description: {{offer.description}}</p>
-                </div>
-            </div>
-        </div>
+    <div>
+        <button class="btn btn-primary" (click)=" onClick()">Edit information</button>
+        <button class="btn btn-primary" [routerLink]="['/editOffer',user.id]">Edit offers</button>
     </div>
-    <a  [routerLink]="['/editOffer',user.id]">Add offer</a>
-</main>
+
+</form>
