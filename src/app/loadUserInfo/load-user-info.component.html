@@ -3,11 +3,11 @@
 
     <div class="form-group">
         <label for="firstName">First name</label>
-        <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" readonly/>
+        <input type="text" [disabled]="!isEditing" class="form-control" name="firstName" [(ngModel)]="user.firstName" />
     </div>
     <div class="form-group">
         <label for="firstName">Last name</label>
-        <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" readonly/>
+        <input type="text" [disabled]="!isEditing" class="form-control" name="lastName" [(ngModel)]="user.lastName" />
     </div>
     <div class="form-group">
         <label for="login">Login</label>
@@ -15,11 +15,11 @@
     </div>
     <div class="form-group">
         <label for="phone">Phone number</label>
-        <input type="text" class="form-control" name="phone" [(ngModel)]="user.phoneNumber" placeholder="N/A" readonly/>
+        <input type="text" [disabled]="!isEditing" class="form-control" name="phone" [(ngModel)]="user.phoneNumber" placeholder="N/A" />
     </div>
     <div class="form-group">
         <label for="phone">Country</label>
-        <input type="text" class="form-control" name="country" [(ngModel)]="user.country" placeholder="N/A" readonly/>
+        <input type="text" [disabled]="!isEditing" class="form-control" name="country" [(ngModel)]="user.country" placeholder="N/A" />
     </div>
     <div>
         <label>Rating</label>
@@ -30,12 +30,12 @@
         </ng-template>
         <ngb-rating [(rate)]="user.rating" [starTemplate]="t" [readonly]="true" max="5">
         </ngb-rating>
-        <hr>
-        <pre>Rate: <b>{{user.rating}}</b></pre>
     </div>
     <div>
-        <button class="btn btn-primary" (click)=" onClick()">Edit information</button>
+        <button class="btn btn-primary" *ngIf="!isEditing" (click)="onClick()">Edit information</button>
+        <button class="btn btn-primary" *ngIf="isEditing" (click)="saveChanges()">Save changes</button>
         <button class="btn btn-primary" [routerLink]="['/editOffer',user.id]">Edit offers</button>
+        
     </div>
 
 </form>

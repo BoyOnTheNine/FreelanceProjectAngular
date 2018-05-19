@@ -13,15 +13,23 @@ import { AuthenticationService } from '../authorise/authentication.service';
 export class LoadUserComponent implements OnInit{
     @Input() user: User;
     offers: Offer[];
-
+    isEditing = false;
     constructor(private offerService : OfferService, 
         private userService: UserService, 
         private authService: AuthenticationService) {}
 
     ngOnInit(){
-        this.userService.GetUserByLogin("userlogin").subscribe(data => {
+        this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
             this.user = data;
             console.log('this.user = ' + this.user)});
       this.offers =  this.offerService.getUserOffers(this.user);
+    }
+    onClick(){
+        this.isEditing = true;
+    }
+
+    saveChanges(){
+        this.userService.UpdateUser(this.user).subscribe();
+        this.isEditing = false;
     }
 }
