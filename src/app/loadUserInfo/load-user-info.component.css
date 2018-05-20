@@ -13,3 +13,14 @@
     overflow: hidden;
     color: blue;
   }
+
+.card {
+    width: 19rem;
+    height: 15rem;
+    margin-bottom: 2rem;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}

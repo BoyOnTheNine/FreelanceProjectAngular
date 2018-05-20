@@ -1,10 +1,10 @@
-import { Injectable, EventEmitter, Output, OnInit } from '@angular/core';
+import { Injectable, EventEmitter, Output, OnInit, DoCheck } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
-export class AuthenticationService implements OnInit {
+export class AuthenticationService implements DoCheck {
     
     public token: string;
     private readonly serverUrl = 'http://localhost:8080';
@@ -13,7 +13,7 @@ export class AuthenticationService implements OnInit {
     
     constructor(private http: HttpClient) {      
     }
-    ngOnInit(){
+    ngDoCheck(){
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
     }

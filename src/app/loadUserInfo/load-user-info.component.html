@@ -15,11 +15,13 @@
     </div>
     <div class="form-group">
         <label for="phone">Phone number</label>
-        <input type="text" [disabled]="!isEditing" class="form-control" name="phone" [(ngModel)]="user.phoneNumber" placeholder="N/A" />
+        <input type="text" [disabled]="!isEditing" class="form-control" name="phone" [(ngModel)]="user.phoneNumber" placeholder="N/A"
+        />
     </div>
     <div class="form-group">
         <label for="phone">Country</label>
-        <input type="text" [disabled]="!isEditing" class="form-control" name="country" [(ngModel)]="user.country" placeholder="N/A" />
+        <input type="text" [disabled]="!isEditing" class="form-control" name="country" [(ngModel)]="user.country" placeholder="N/A"
+        />
     </div>
     <div>
         <label>Rating</label>
@@ -34,14 +36,28 @@
     <div>
         <button class="btn btn-primary" *ngIf="!isEditing" (click)="onClick()">Edit information</button>
         <button class="btn btn-primary" *ngIf="isEditing" (click)="saveChanges()">Save changes</button>
-        <button class="btn btn-primary"  (click)="onShowOffer()">Show my offers</button>
-        
+        <button class="btn btn-primary" (click)="onShowOffer()">Show my offers</button>
     </div>
-
 </form>
 
 <div *ngIf="isShow">
     <button class="btn btn-primary" [routerLink]="['/editOffer',0]">Create new offer</button>
+    <h2>My offers</h2>
+    <div class="row card-group">
+        <div class="col-3" *ngFor="let offer of offers">
+            <div class="card text-center">
+                <div class="card-header">{{offer.name}}</div>
+                <div class="card-body">
+                    <p>Description: {{offer.description}}</p>
+                    <!-- <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p> -->
+                    <p>Price: {{offer.price}}</p>
+                    <p>Date: {{offer.date}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div>
     <p>My OFFERS</p>
     <div *ngFor ="let offer of offers">
     <p>Offer number: {{offer.id}}</p>
@@ -50,4 +66,4 @@
     <p>Offer date: {{offer.date}}</p>
     <button class="btn btn-primary" [routerLink]="['/editOffer',offer.id]">Edit offer</button>
   </div>
-</div>
+</div> -->

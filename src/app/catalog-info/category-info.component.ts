@@ -7,11 +7,13 @@ import { CategoryService } from '../platform/category.service';
     
 @Component({
     selector: 'category-info',
-    templateUrl: 'category-info.component.html'
+    templateUrl: 'category-info.component.html',
+    styleUrls: ['category-info.component.css']
   
 })
 
 export class CategoryInfoComponent implements OnInit  { 
+    p: Number = 1;
     
     objOffers: Offer[] = [];
     categoryName: string;
