@@ -23,9 +23,9 @@ export class OfferService implements OnInit{
         this.getAllOffers();
     }
 
-    getUserOffers(user: User) : Offer[] {
-      this.updateOffers();
-       return this.allOffers.filter(ofr => ofr.user.id == user.id);
+    getUserOffers(offers : Offer[],user: User) : Offer[] {
+   
+       return offers.filter(ofr => ofr.user.id == user.id);
     }
 
     updateOffers(){

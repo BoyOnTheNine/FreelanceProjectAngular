@@ -25,6 +25,7 @@ export class LoadUserComponent implements OnInit{
             this.user = data;
             console.log('this.user = ' + this.user)});
         this.offerService.getAllOffers().subscribe(data => {this.offers = data});
+        this.offers = this.offerService.getUserOffers(this.offers,this.user);
     }
     onClick(){
         this.isEditing = true;
