@@ -37,8 +37,15 @@ export class UserService {
         };
         return this.http.put(this.serverUrl + "/users/" + user.id, body);
     }
-    CreateUser(user: User) {
-        return this.http.post(this.serverUrl + "/signup", JSON.stringify(user));
+    CreateUser(user: any) {
+        let body = {
+            firstName:user.firstName, 
+            lastName:user.lastName,
+            login:user.login,
+            email:user.email,
+            password:user.password
+        };
+        return this.http.post('http://localhost:8080/signup', body);
     }
 
 
