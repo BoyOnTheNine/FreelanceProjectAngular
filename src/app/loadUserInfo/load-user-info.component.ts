@@ -14,6 +14,7 @@ export class LoadUserComponent implements OnInit{
     @Input() user: User;
     offers: Offer[];
     isEditing = false;
+    isShow = false;
     constructor(private offerService : OfferService, 
         private userService: UserService, 
         private authService: AuthenticationService) {}
@@ -22,11 +23,17 @@ export class LoadUserComponent implements OnInit{
         this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
             this.user = data;
             console.log('this.user = ' + this.user)});
-        this.offerService.getAllOffers().subscribe(data => {this.offers = data});
-        this.offers = this.offerService.getUserOffers(this.offers,this.user);
+
+     
+     
     }
     onClick(){
         this.isEditing = true;
+    }
+
+    onShowOffer(){
+        this.isShow = !this.isShow;
+        this.offers = this.offerService.getUserOffers(this.user.id);
     }
 
     saveChanges(){

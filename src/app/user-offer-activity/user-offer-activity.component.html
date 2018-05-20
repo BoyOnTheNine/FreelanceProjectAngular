@@ -1,3 +1,14 @@
-<p>
-  {{user.id}}
-</p>
+
+<div *ngIf="!isNew"> 
+  <button class="btn btn-primary"  (click)="onDelete()">Delete Offer</button>
+  <p>
+    {{offer.name}}
+  </p>
+</div>
+
+<div *ngIf="!sNew"> 
+    <p>
+     Create
+    </p>
+  </div>
+

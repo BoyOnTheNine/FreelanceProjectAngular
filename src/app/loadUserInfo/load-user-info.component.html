@@ -34,19 +34,20 @@
     <div>
         <button class="btn btn-primary" *ngIf="!isEditing" (click)="onClick()">Edit information</button>
         <button class="btn btn-primary" *ngIf="isEditing" (click)="saveChanges()">Save changes</button>
-        <button class="btn btn-primary" [routerLink]="['/editOffer',user.id]">Edit offers</button>
+        <button class="btn btn-primary"  (click)="onShowOffer()">Show my offers</button>
         
     </div>
 
 </form>
 
-<div>
+<div *ngIf="isShow">
+    <button class="btn btn-primary" [routerLink]="['/editOffer',0]">Create new offer</button>
     <p>My OFFERS</p>
-    <p>{{num}}</p>
     <div *ngFor ="let offer of offers">
     <p>Offer number: {{offer.id}}</p>
     <p>Offer name: {{offer.name}}</p>
     <p>Offer price: {{offer.price}}</p>
     <p>Offer date: {{offer.date}}</p>
+    <button class="btn btn-primary" [routerLink]="['/editOffer',offer.id]">Edit offer</button>
   </div>
 </div>

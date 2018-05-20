@@ -3,6 +3,7 @@ import {OfferService} from '../offer/offer.service';
 import { User } from '../shared/user';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user-service/user.service';
+import { Offer } from '../shared/offer';
 
 
 @Component({
@@ -12,12 +13,19 @@ import { UserService } from '../user-service/user.service';
 })
 export class UserOfferActivityComponent implements OnInit {
 
-    user : User;
+    offer : Offer;
+    isNew: boolean = false;
   constructor(private offServ: OfferService, private route: ActivatedRoute, private usrService : UserService) { }
 
   ngOnInit() {
-    var id = +this.route.snapshot.params['id'];
-    this.user = this.usrService.GetUserById(id);
+   var id = +this.route.snapshot.params['id'];
+   if(id === 0) this.isNew = !this.isNew;
+   if(!this.isNew)
+      this.offer = this.offServ.getOfferById(id);
+  }
+
+  onDelete(){
+
   }
 
 }
