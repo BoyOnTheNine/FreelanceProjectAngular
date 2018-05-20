@@ -15,11 +15,13 @@
     </div>
     <div class="form-group">
         <label for="phone">Phone number</label>
-        <input type="text" [disabled]="!isEditing" class="form-control" name="phone" [(ngModel)]="user.phoneNumber" placeholder="N/A" />
+        <input type="text" [disabled]="!isEditing" class="form-control" name="phone" [(ngModel)]="user.phoneNumber" placeholder="N/A"
+        />
     </div>
     <div class="form-group">
         <label for="phone">Country</label>
-        <input type="text" [disabled]="!isEditing" class="form-control" name="country" [(ngModel)]="user.country" placeholder="N/A" />
+        <input type="text" [disabled]="!isEditing" class="form-control" name="country" [(ngModel)]="user.country" placeholder="N/A"
+        />
     </div>
     <div>
         <label>Rating</label>
@@ -35,12 +37,26 @@
         <button class="btn btn-primary" *ngIf="!isEditing" (click)="onClick()">Edit information</button>
         <button class="btn btn-primary" *ngIf="isEditing" (click)="saveChanges()">Save changes</button>
         <button class="btn btn-primary" [routerLink]="['/editOffer',user.id]">Edit offers</button>
-        
+
     </div>
 
 </form>
+<h2>My offers</h2>
+<div class="row card-group">
+    <div class="col-3" *ngFor="let offer of offers">
+        <div class="card text-center">
+            <div class="card-header">{{offer.name}}</div>
+            <div class="card-body">
+                <p>Description: {{offer.description}}</p>
+                <!-- <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p> -->
+                <p>Price: {{offer.price}}</p>
+                <p>Date: {{offer.date}}</p>
+            </div>
+        </div>
 
-<div>
+    </div>
+</div>
+<!-- <div>
     <p>My OFFERS</p>
     <p>{{num}}</p>
     <div *ngFor ="let offer of offers">
@@ -49,4 +65,4 @@
     <p>Offer price: {{offer.price}}</p>
     <p>Offer date: {{offer.date}}</p>
   </div>
-</div>
+</div> -->
