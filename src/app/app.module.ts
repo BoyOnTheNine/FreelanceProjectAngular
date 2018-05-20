@@ -28,6 +28,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './shared/jwt-interceptor';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert-service/alert.service';
+import { SkillService } from './skill-service/skill.service';
 
 
 
@@ -73,6 +74,7 @@ import { AlertService } from './alert-service/alert.service';
         }, 
         AuthGuard, 
         AlertService,
+        SkillService,
         AuthenticationService, 
         OfferService, 
         CategoryService],

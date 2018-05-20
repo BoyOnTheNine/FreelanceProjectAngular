@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { User } from '../shared/user';
+import { Skill } from '../shared/skill'
 
 import { AuthenticationService } from "../authorise/authentication.service";
 import { Observable }     from 'rxjs/Observable';
@@ -25,7 +26,8 @@ export class UserService {
             firstName:user.firstName, 
             lastName:user.lastName,
             country:user.country,
-            phoneNumber:user.phoneNumber
+            phoneNumber:user.phoneNumber,
+            skills: user.skills
         };
         return this.http.put(this.serverUrl + "/users/" + user.id, body);
     }
@@ -40,5 +42,10 @@ export class UserService {
         return this.http.post('http://localhost:8080/signup', body);
     }
 
-
+    updateUserSkills(skill: Skill[], id: Number){
+        let body = {
+            skills: skill
+        };
+        return this.http.put(this.serverUrl + "/users/" + id, body);
+    }
 }
