@@ -22,7 +22,7 @@ export class LoadUserComponent implements OnInit{
         this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
             this.user = data;
             console.log('this.user = ' + this.user)});
-      this.offers =  this.offerService.getUserOffers(this.user);
+        this.offerService.getAllOffers().subscribe(data => {this.offers = data});
     }
     onClick(){
         this.isEditing = true;

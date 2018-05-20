@@ -39,3 +39,14 @@
     </div>
 
 </form>
+
+<div>
+    <p>My OFFERS</p>
+    <p>{{num}}</p>
+    <div *ngFor ="let offer of offers">
+    <p>Offer number: {{offer.id}}</p>
+    <p>Offer name: {{offer.name}}</p>
+    <p>Offer price: {{offer.price}}</p>
+    <p>Offer date: {{offer.date}}</p>
+  </div>
+</div>
