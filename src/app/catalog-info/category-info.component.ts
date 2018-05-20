@@ -29,7 +29,7 @@ export class CategoryInfoComponent implements OnInit  {
     getOffer(Id: number){
         this.offService.getAllOffers()
         .subscribe(offers => {this.objOffers = offers;
-            console.log('this.allOffers = ', offers);
+            console.log('this.allOffers = ', this.objOffers);
         });
         console.log('this.objOffers = ', this.objOffers);
     }
