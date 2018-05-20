@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
 import { User } from '../shared/user';
 import { users } from '../fake-storage/fake-users';
-import { Http, Headers, RequestOptions, Response } from "@angular/http";
 import { AuthenticationService } from "../authorise/authentication.service";
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class UserService {
 
-    constructor(private http: Http, private authService: AuthenticationService) { }
+    constructor(private http: HttpClient, private authService: AuthenticationService) { }
 
     private readonly serverUrl = 'http://localhost:8080/api/v1';
 
@@ -23,34 +23,22 @@ export class UserService {
         return users.find(usr => usr.id === id);
     }
 
-    GetUserByLogin(login: string): Observable<User> {
-        let headers = new Headers({
-            'Authorization': 'Bearer ' + this.authService.token
-        });
-        let options = new RequestOptions({ headers: headers });
-        return this.http.get(this.serverUrl + "/user/login/" + login, options).map((response: Response) =>response.json());
+    GetUserByLogin(login: string){
+        return this.http.get<User>(this.serverUrl + "/user/login/" + login);
     }
 
-    UpdateUser(user: User): Observable<User>{
-        let headers = new Headers({
-            'Authorization': 'Bearer ' + this.authService.token,
-            "Content-Type":"application/json"
-        });
-        let options = new RequestOptions({ headers: headers });
+    UpdateUser(user: User){
 
-        let body = JSON.stringify({
+        let body = {
             firstName:user.firstName, 
             lastName:user.lastName,
             country:user.country,
             phoneNumber:user.phoneNumber
-        });
-        console.log('Options: ' + JSON.stringify(options));
-        return this.http.put(this.serverUrl+"/users/"+ user.id, body, {headers: headers})
-        .map((response: Response) => response.json());
+        };
+        return this.http.put(this.serverUrl + "/users/" + user.id, body);
     }
-
     CreateUser(user: User) {
-        users.push(user);
+        return this.http.post(this.serverUrl + "/signup", JSON.stringify(user));
     }
 
 
