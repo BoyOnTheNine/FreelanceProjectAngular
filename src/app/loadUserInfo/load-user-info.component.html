@@ -36,24 +36,23 @@
     <div>
         <button class="btn btn-primary" *ngIf="!isEditing" (click)="onClick()">Edit information</button>
         <button class="btn btn-primary" *ngIf="isEditing" (click)="saveChanges()">Save changes</button>
-        <button class="btn btn-primary"  (click)="onShowOffer()">Show my offers</button>
-        
+        <button class="btn btn-primary" (click)="onShowOffer()">Show my offers</button>
     </div>
-
 </form>
 
 <div *ngIf="isShow">
     <button class="btn btn-primary" [routerLink]="['/editOffer',0]">Create new offer</button>
-<h2>My offers</h2>
-<div class="row card-group">
-    <div class="col-3" *ngFor="let offer of offers">
-        <div class="card text-center">
-            <div class="card-header">{{offer.name}}</div>
-            <div class="card-body">
-                <p>Description: {{offer.description}}</p>
-                <!-- <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p> -->
-                <p>Price: {{offer.price}}</p>
-                <p>Date: {{offer.date}}</p>
+    <h2>My offers</h2>
+    <div class="row card-group">
+        <div class="col-3" *ngFor="let offer of offers">
+            <div class="card text-center">
+                <div class="card-header">{{offer.name}}</div>
+                <div class="card-body">
+                    <p>Description: {{offer.description}}</p>
+                    <!-- <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p> -->
+                    <p>Price: {{offer.price}}</p>
+                    <p>Date: {{offer.date}}</p>
+                </div>
             </div>
         </div>
     </div>
