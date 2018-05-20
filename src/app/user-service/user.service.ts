@@ -45,7 +45,7 @@ export class UserService {
             email:user.email,
             password:user.password
         };
-        return this.http.post(this.serverUrl + "/signup", user);
+        return this.http.post('http://localhost:8080/signup', body);
     }
 
 
