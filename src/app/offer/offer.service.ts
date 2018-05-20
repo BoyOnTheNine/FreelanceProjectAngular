@@ -57,7 +57,7 @@ export class OfferService implements OnInit{
     }
 
     getOfferById(id : Number): Offer{
-          this.updateOffers();
+          this.getAllOffers().subscribe(res => this.allOffers = res);
           return this.allOffers.find(off => off.id == id);
     }
 

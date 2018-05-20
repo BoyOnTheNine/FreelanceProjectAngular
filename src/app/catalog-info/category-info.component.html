@@ -3,12 +3,11 @@
     <div class="row card-group" style="margin: 1rem">
         <div class="col-md-3" *ngFor="let offer of objOffers">
             <div class="card">
-                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
                 <div class="card-body">
                     <h5 class="card-title">{{offer.name}}</h5>
                     <p>Description: {{offer.description}}</p>
-                    <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p>
-                    <p>Phone: {{offer.user.phoneNumber}}</p>
+                    <!-- <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p> -->
+                    <p>Price: {{offer.price}}</p>
                     <a [routerLink]="['/offerdetail',offer.id]" class="btn btn-primary">Show more</a>
                 </div>
             </div>

@@ -65,7 +65,8 @@ import { AlertService } from './alert-service/alert.service';
     AlertComponent
     ],
     providers: [
-        UserService,{
+        UserService,
+        {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,
             multi: true

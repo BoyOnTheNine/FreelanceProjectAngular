@@ -22,16 +22,18 @@ export class CategoryInfoComponent implements OnInit  {
 
     ngOnInit(){
        var id = +this.route.snapshot.params['id'];
-       this.getOffer(id);
+       this.offService.getAllOffers()
+        .subscribe(offers => {this.objOffers = offers;
+            console.log('this.objOffers = ', this.objOffers);
+        });
         this.getCatName(id);
     }
 
     getOffer(Id: number){
         this.offService.getAllOffers()
         .subscribe(offers => {this.objOffers = offers;
-            console.log('this.allOffers = ', this.objOffers);
+            console.log('this.objOffers = ', this.objOffers);
         });
-        console.log('this.objOffers = ', this.objOffers);
     }
 
     getCatName(Id: number){
