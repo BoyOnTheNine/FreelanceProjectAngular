@@ -67,10 +67,23 @@ export class OfferService implements OnInit{
         return this.http.put( this.offerUrl + '/offers/'+offer.id, body);
     }
 
+    createOffer(offer: any){
+        let body = {
+            name:offer.name, 
+            description:offer.description,
+            date:offer.date,
+            price:offer.price,
+            categories:offer.categories,
+            customer:offer.customer
+        };
+        return this.http.post( this.offerUrl + '/offers', body);
+    }
+
     deleteOffer(offer: Offer){
       
         return this.http.delete( this.offerUrl + "/offers/"+ offer.id);
     }
+
 
    
 

@@ -16,17 +16,14 @@ import { CategoryService } from '../platform/category.service';
 export class UserOfferActivityComponent implements OnInit {
 
     offer : Offer;
-    isNew: boolean = false;
+ 
     categories: Category[];
     user: User
   constructor(private offServ: OfferService, private route: ActivatedRoute, private usrService : UserService, private catServise : CategoryService, private router : Router) { }
 
   ngOnInit() {
-   var id = +this.route.snapshot.params['id'];
-   if(id === 0) this.isNew = !this.isNew;
-   this.offer = undefined;
-   if(!this.isNew)
-      this.offer = this.offServ.getOfferById(id);
+  var id = +this.route.snapshot.params['id'];
+  this.offer = this.offServ.getOfferById(id);
   this.getCategories();
   }
 
@@ -40,17 +37,13 @@ export class UserOfferActivityComponent implements OnInit {
   }
 
   onDelete(){
-    this.offServ.deleteOffer(this.offer);
-    this.router.navigate['/userInfo']
+    this.offServ.deleteOffer(this.offer).subscribe(o => this.router.navigateByUrl('/userInfo'));
   }
 
-  onCreate(){
-
-  }
+ 
 
   onUppdate(){
-      this.offServ.uppdateOffer(this.offer).subscribe();
-      this.router.navigateByUrl("/userInfo");
+      this.offServ.uppdateOffer(this.offer).subscribe(o => this.router.navigateByUrl('/userInfo'));
   }
 
 }

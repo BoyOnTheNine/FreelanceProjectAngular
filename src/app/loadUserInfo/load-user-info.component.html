@@ -41,7 +41,7 @@
 </form>
 
 <div *ngIf="isShow">
-    <button class="btn btn-primary" [routerLink]="['/editOffer',0]">Create new offer</button>
+    <button class="btn btn-primary" [routerLink]="['/createOffer',user.id]">Create new offer</button>
     <h2>My offers</h2>
     <div class="row card-group">
         <div class="col-3" *ngFor="let offer of offers">
@@ -53,17 +53,9 @@
                     <p>Price: {{offer.price}}</p>
                     <p>Date: {{offer.date}}</p>
                 </div>
+                <button class="btn btn-primary" [routerLink]="['/editOffer',offer.id]">Edit offer</button>
             </div>
+           
         </div>
     </div>
 </div>
-<!-- <div>
-    <p>My OFFERS</p>
-    <div *ngFor ="let offer of offers">
-    <p>Offer number: {{offer.id}}</p>
-    <p>Offer name: {{offer.name}}</p>
-    <p>Offer price: {{offer.price}}</p>
-    <p>Offer date: {{offer.date}}</p>
-    <button class="btn btn-primary" [routerLink]="['/editOffer',offer.id]">Edit offer</button>
-  </div>
-</div> -->

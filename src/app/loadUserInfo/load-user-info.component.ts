@@ -1,4 +1,4 @@
-import {Component, Input, DoCheck} from '@angular/core';
+import {Component, Input, DoCheck, OnInit} from '@angular/core';
 import {User} from '../shared/user';
 import {Offer} from '../shared/offer';
 import {OfferService} from '../offer/offer.service';
@@ -11,7 +11,7 @@ import { AlertService } from '../alert-service/alert.service';
     templateUrl: 'load-user-info.component.html',
     styleUrls: ['load-user-info.component.css']
 })
-export class LoadUserComponent implements DoCheck{
+export class LoadUserComponent implements OnInit{
     @Input() user: User;
     offers: Offer[];
     isEditing = false;
@@ -21,7 +21,7 @@ export class LoadUserComponent implements DoCheck{
         private authService: AuthenticationService,
         private alertService: AlertService) {}
 
-    ngDoCheck(){
+    ngOnInit(){
         this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
             this.user = data;
             console.log('this.user = ' + this.user)});
