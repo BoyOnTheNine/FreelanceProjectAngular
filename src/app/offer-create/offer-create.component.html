@@ -1,5 +1,4 @@
-
-  <form class="container col-md-4">
+<form class="container col-md-4">
   <div class="form-group">
       <label for="firstName">Offer Name</label>
       <input type="text"  class="form-control" name="name" [(ngModel)]="offer.name" />
@@ -17,15 +16,23 @@
       <input type="text"  class="form-control" name="price" [(ngModel)]="offer.price"  />
   </div>
   <div class="form-group">
-      <label for="phone">Categories</label>
-      <select class="form-control" name="categoryies" [(ngModel)]="offer.categories" class="form-control" >
-        <option *ngFor="let cat of categories" [value]="cat">{{cat.name}}</option>
-      </select>
-  </div>
+    <label for="phone">Categories</label>
+    <select class="form-control" name="categoryies" [(ngModel)]="offer.categories"  class="form-control" >
+      <option *ngFor="let cat of categories" [value]="cat">{{cat.name}}</option>
+    </select>
+</div>
   <div>
 
-  <button class="btn btn-primary" (click)="onUppdate()">Uppdate Offer</button>
-  <button class="btn btn-primary"  (click)="onDelete()">Delete Offer</button>
+  <button class="btn btn-primary" (click)="onCreate()" >Create Offer</button>
   </div>
-
 </form>
+<div>
+    <p>d</p>
+    <p>{{offer.price}}</p>
+    <p>{{offer.name}}</p>
+    <p>{{offer.description}}</p>
+    <p>{{offer.date}}</p>
+    <p>{{offer.categories.name}}</p>
+    <p>{{offer.categories}}</p>
+
+</div>

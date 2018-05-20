@@ -41,7 +41,7 @@
 </form>
 
 <div *ngIf="isShow">
-    <button class="btn btn-primary" [routerLink]="['/editOffer',0]">Create new offer</button>
+    <button class="btn btn-primary" [routerLink]="['/createOffer',user.id]">Create new offer</button>
     <p>My OFFERS</p>
     <div *ngFor ="let offer of offers">
     <p>Offer number: {{offer.id}}</p>

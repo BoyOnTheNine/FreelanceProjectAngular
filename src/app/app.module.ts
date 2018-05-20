@@ -28,6 +28,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './shared/jwt-interceptor';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert-service/alert.service';
+import { OfferCreateComponent } from './offer-create/offer-create.component';
 
 
 
@@ -47,6 +48,7 @@ import { AlertService } from './alert-service/alert.service';
             {path: 'offerdetail/:id',component: OfferDetailComponent},
             {path: 'editOffer/:id',component: UserOfferActivityComponent},
             {path: 'register',component: RegisterComponent},
+            {path: 'createOffer/:id',component: OfferCreateComponent},
             {path: '' ,redirectTo:'authorise' ,pathMatch: 'full'},
             {path:'**',component:NotFoundComponent}
         ])],
@@ -62,7 +64,8 @@ import { AlertService } from './alert-service/alert.service';
     RegisterComponent,
     NavigationBarComponent,
     UserOfferActivityComponent,
-    AlertComponent
+    AlertComponent,
+    OfferCreateComponent
     ],
     providers: [
         UserService,

@@ -8,7 +8,7 @@ export class Offer{
     name: string;
     price: number;
     customer: User;
-    date: string;
+    date: Date;
     categories: Category[];
 
 

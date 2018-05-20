@@ -19,6 +19,10 @@ export class UserService {
         return this.http.get<User>(this.serverUrl + "/user/login/" + login);
     }
 
+    GetUserById(id: Number) {
+        return this.http.get<User>(this.serverUrl + '/users/' + id)
+    }
+
     UpdateUser(user: User){
 
         let body = {
