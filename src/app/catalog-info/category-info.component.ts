@@ -13,6 +13,7 @@ import { CategoryService } from '../platform/category.service';
 })
 
 export class CategoryInfoComponent implements OnInit  { 
+    p: Number = 1;
     
     objOffers: Offer[] = [];
     categoryName: string;

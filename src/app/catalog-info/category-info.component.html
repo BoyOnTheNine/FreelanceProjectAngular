@@ -15,7 +15,7 @@
 </main> -->
 <h2 style="margin: 1rem">Category {{categoryName}}</h2>
 <div class="row card-group">
-    <div class="col-3" *ngFor="let offer of objOffers">
+    <div class="col-3" *ngFor="let offer of objOffers | paginate: { itemsPerPage: 8, currentPage: p }">
         <div class="card text-center">
             <div class="card-header">{{offer.name}}</div>
             <div class="card-body">
@@ -30,3 +30,4 @@
         </div>
     </div>
 </div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
