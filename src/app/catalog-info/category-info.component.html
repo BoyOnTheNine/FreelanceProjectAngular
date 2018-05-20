@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
     <h2 style="margin: 1rem">Category {{categoryName}}</h2>
     <div class="row card-group" style="margin: 1rem">
         <div class="col-md-3" *ngFor="let offer of objOffers">
@@ -6,11 +6,27 @@
                 <div class="card-body">
                     <h5 class="card-title">{{offer.name}}</h5>
                     <p>Description: {{offer.description}}</p>
-                    <!-- <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p> -->
                     <p>Price: {{offer.price}}</p>
                     <a [routerLink]="['/offerdetail',offer.id]" class="btn btn-primary">Show more</a>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</main> -->
+<h2 style="margin: 1rem">Category {{categoryName}}</h2>
+<div class="row card-group">
+    <div class="col-3" *ngFor="let offer of objOffers">
+        <div class="card text-center">
+            <div class="card-header">{{offer.name}}</div>
+            <div class="card-body">
+                <p>Description: {{offer.description}}</p>
+                <!-- <p>User name: {{offer.user.firstName}} {{offer.user.lastName}}</p> -->
+                <p>Price: {{offer.price}}</p>
+                <p>Date: {{offer.date}}</p>
+            </div>
+            <div class="card-footer">
+                <a [routerLink]="['/offerdetail',offer.id]" class="btn btn-primary">Show more</a>
+            </div>
+        </div>
+    </div>
+</div>

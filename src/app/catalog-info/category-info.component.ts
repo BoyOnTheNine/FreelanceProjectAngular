@@ -7,7 +7,8 @@ import { CategoryService } from '../platform/category.service';
     
 @Component({
     selector: 'category-info',
-    templateUrl: 'category-info.component.html'
+    templateUrl: 'category-info.component.html',
+    styleUrls: ['category-info.component.css']
   
 })
 
