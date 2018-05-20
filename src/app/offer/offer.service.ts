@@ -13,6 +13,7 @@ import { HttpClient } from "@angular/common/http";
 @Injectable()
 export class OfferService implements OnInit{
     allOffers: Offer[];
+    offerUrl: string ='http://localhost:8080/api/v1';
 
     constructor(private http: HttpClient, 
         private authService: AuthenticationService,
@@ -36,7 +37,7 @@ export class OfferService implements OnInit{
     getAllOffers(){
         // this.updateOffers();
         // return this.allOffers;
-        return this.http.get<Offer[]>('http://localhost:8080/api/v1/offers');
+        return this.http.get<Offer[]>(this.offerUrl + '/offers');
     }
 
     findOffer(id: number):Offer[]{
@@ -52,6 +53,23 @@ export class OfferService implements OnInit{
     getOfferById(id : Number): Offer{
           this.getAllOffers().subscribe(res => this.allOffers = res);
           return this.allOffers.find(off => off.id == id);
+    }
+
+    uppdateOffer(offer : Offer){
+        let body = {
+            name:offer.name, 
+            description:offer.description,
+            date:offer.date,
+            price:offer.price,
+            categories:offer.categories,
+            customer:offer.customer
+        };
+        return this.http.put( this.offerUrl + '/offers/'+offer.id, body);
+    }
+
+    deleteOffer(offer: Offer){
+      
+        return this.http.delete( this.offerUrl + "/offers/"+ offer.id);
     }
 
    

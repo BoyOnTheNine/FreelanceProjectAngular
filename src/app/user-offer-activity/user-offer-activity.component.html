@@ -1,14 +1,33 @@
 
-<div *ngIf="!isNew"> 
-  <button class="btn btn-primary"  (click)="onDelete()">Delete Offer</button>
-  <p>
-    {{offer.name}}
-  </p>
-</div>
+  
+ 
 
-<div *ngIf="!sNew"> 
-    <p>
-     Create
-    </p>
+  <form class="container col-md-4">
+  <div class="form-group">
+      <label for="firstName">Offer Name</label>
+      <input type="text"  class="form-control" name="name" [(ngModel)]="offer.name" />
   </div>
-
+  <div class="form-group">
+      <label for="firstName">Offer Description</label>
+      <input type="text"  class="form-control" name="description" [(ngModel)]="offer.description" />
+  </div>
+  <div class="form-group">
+      <label for="login">Date</label>
+      <input type="text" class="form-control" name="date" [(ngModel)]="offer.date" />
+  </div>
+  <div class="form-group">
+      <label for="phone">Price</label>
+      <input type="text"  class="form-control" name="price" [(ngModel)]="offer.price"  />
+  </div>
+  <div class="form-group">
+      <label for="phone">Categories</label>
+      <select class="form-control" name="categoryies" [(ngModel)]="offer.categories" class="form-control" >
+        <option *ngFor="let cat of categories" [value]="cat">{{cat.name}}</option>
+      </select>
+  </div>
+  <div>
+  <button class="btn btn-primary" *ngIf="!!isNew" (click)="onCreate()">Create Offer</button>
+  <button class="btn btn-primary" *ngIf="!isNew" (click)="onUppdate()">Uppdate Offer</button>
+  <button class="btn btn-primary" *ngIf="!isNew" (click)="onDelete()">Delete Offer</button>
+  </div>
+</form>
