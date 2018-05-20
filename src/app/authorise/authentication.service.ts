@@ -1,21 +1,24 @@
-import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Injectable, EventEmitter, Output, OnInit } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AuthenticationService {
+export class AuthenticationService implements OnInit {
     
     public token: string;
     private readonly serverUrl = 'http://localhost:8080';
     @Output() loginString: string;
     @Output() logged = false;
     
-    constructor(private http: Http) {
+    constructor(private http: Http) {}
+      
+
+    ngOnInit(){
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
     }
-
+    
 
 
     login(username: string, password: string): Observable<boolean> {
