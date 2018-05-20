@@ -3,22 +3,21 @@ import { Offer } from "../shared/offer";
 import { User } from "../shared/user";
 import {CategoryService} from '../platform/category.service';
 import { Category } from "../shared/category";
-import { Http, Headers, RequestOptions, Response} from "@angular/http";
+//import { Http, Headers, RequestOptions, Response} from "@angular/http";
 import { AuthenticationService } from "../authorise/authentication.service";
 import { Observable }     from 'rxjs/Observable';
+import { HttpClient } from "@angular/common/http";
 
 
 
 @Injectable()
 export class OfferService implements OnInit{
     allOffers: Offer[];
-    CatService: CategoryService;
-    
-    constructor(private http: Http, 
+
+    constructor(private http: HttpClient, 
         private authService: AuthenticationService,
         private categoryService: CategoryService
-    ){
-    }
+    ){ }
 
     ngOnInit(){
         this.getAllOffers();
@@ -33,28 +32,16 @@ export class OfferService implements OnInit{
         // this.allOffers = offers;
     }
 
-    getAllOffers() : Observable<Offer[]>{
+    getAllOffers(){
         // this.updateOffers();
         // return this.allOffers;
-        let headers = new Headers({'Authorization':'Bearer ' + this.authService.token
-        });
-        let options = new RequestOptions({headers: headers});
-        return this.http.get('http://localhost:8080/api/v1/offers', options)
-        .map((response: Response) =>response.json());
+        return this.http.get<Offer[]>('http://localhost:8080/api/v1/offers');
     }
 
     findOffer(id: number):Offer[]{
-        this.getAllOffers();
+        this.getAllOffers().subscribe(res => this.allOffers = res);
         this.categoryService.updateCategory();
         return this.allOffers;
-        // this.updateOffers();
-       
-        // return this.allOffers.filter(off => off.category.find(c => c.id == id));
-        // let headers = new Headers({'Authorization':'Bearer ' + this.authService.token
-        // });
-        // let options = new RequestOptions({headers: headers});
-        // return this.http.get('http://localhost:8080/api/v1/offers/' + id, options)
-        // .map((response: Response) =>response.json());
     }
 
     getCatalogNameById(id: Number): string{
@@ -62,7 +49,7 @@ export class OfferService implements OnInit{
     }
 
     getOfferById(id : Number): Offer{
-          this.updateOffers();
+          this.getAllOffers().subscribe(res => this.allOffers = res);
           return this.allOffers.find(off => off.id == id);
     }
 

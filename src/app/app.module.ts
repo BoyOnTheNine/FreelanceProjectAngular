@@ -2,7 +2,9 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 
 
@@ -23,6 +25,9 @@ import { UserService } from './user-service/user.service';
 import { LoginComponent } from './authorise/login.component';
 import { AuthenticationService } from './authorise/authentication.service';
 import { AuthGuard } from './guards/auth.guard';
+import { JwtInterceptor } from './shared/jwt-interceptor';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './alert-service/alert.service';
 
 
 
@@ -32,6 +37,7 @@ import { AuthGuard } from './guards/auth.guard';
         BrowserModule,
         FormsModule,
         HttpModule,
+        HttpClientModule,
         RouterModule.forRoot([
             {path: 'home',component: HomeComponent},
             {path: 'authorise', component: LoginComponent},
@@ -55,9 +61,21 @@ import { AuthGuard } from './guards/auth.guard';
     OfferDetailComponent,
     RegisterComponent,
     NavigationBarComponent,
-    UserOfferActivityComponent
+    UserOfferActivityComponent,
+    AlertComponent
     ],
-    providers: [UserService, AuthGuard, AuthenticationService, OfferService, CategoryService],
+    providers: [
+        UserService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        }, 
+        AuthGuard, 
+        AlertService,
+        AuthenticationService, 
+        OfferService, 
+        CategoryService],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
