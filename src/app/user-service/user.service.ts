@@ -37,7 +37,14 @@ export class UserService {
         };
         return this.http.put(this.serverUrl + "/users/" + user.id, body);
     }
-    CreateUser(user: User) {
+    CreateUser(user: any) {
+        let body = {
+            firstName:user.firstName, 
+            lastName:user.lastName,
+            login:user.login,
+            email:user.email,
+            password:user.password
+        };
         return this.http.post(this.serverUrl + "/signup", user);
     }
 

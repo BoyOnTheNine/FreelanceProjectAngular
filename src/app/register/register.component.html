@@ -16,6 +16,11 @@
             <input type="text" class="form-control" name="login" [(ngModel)]="model.login" #username="ngModel" required />
             <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
         </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="email">E-mail</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+            <div *ngIf="f.submitted && !email.valid" class="help-block">E-mail is required</div>
+        </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />

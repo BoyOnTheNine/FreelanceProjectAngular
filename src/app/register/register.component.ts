@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit  {
         error => {
             this.alertService.error(error);
             this.loading = false;
-        });;
+        });
         this.router.navigateByUrl('/home');
      }
     
