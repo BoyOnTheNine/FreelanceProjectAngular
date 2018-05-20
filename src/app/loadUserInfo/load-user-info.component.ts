@@ -4,6 +4,7 @@ import {Offer} from '../shared/offer';
 import {OfferService} from '../offer/offer.service';
 import { UserService } from '../user-service/user.service';
 import { AuthenticationService } from '../authorise/authentication.service';
+import { AlertService } from '../alert-service/alert.service';
 
 @Component({
     selector: "load",
@@ -16,7 +17,8 @@ export class LoadUserComponent implements OnInit{
     isEditing = false;
     constructor(private offerService : OfferService, 
         private userService: UserService, 
-        private authService: AuthenticationService) {}
+        private authService: AuthenticationService,
+        private alertService: AlertService) {}
 
     ngOnInit(){
         this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
@@ -29,7 +31,13 @@ export class LoadUserComponent implements OnInit{
     }
 
     saveChanges(){
-        this.userService.UpdateUser(this.user).subscribe();
+        this.userService.UpdateUser(this.user).subscribe(data => {
+            // set success message and pass true paramater to persist the message after redirecting to the login page
+            this.alertService.success('Changes successfully saved', true);
+        },
+        error => {
+            this.alertService.error(error);
+        });
         this.isEditing = false;
     }
 }
