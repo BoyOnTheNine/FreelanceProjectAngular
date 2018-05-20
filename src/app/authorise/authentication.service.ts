@@ -12,7 +12,7 @@ export class AuthenticationService implements OnInit {
     @Output() logged = false;
     
     constructor(private http: HttpClient) {      
-
+    }
     ngOnInit(){
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;

@@ -5,6 +5,7 @@ import {skills} from '../fake-storage/fake-Skills';
 import {Skill} from '../shared/skill'
 import {FormsModule} from '@angular/forms';
 import { UserService } from '../user-service/user.service';
+import { AlertService } from '../alert-service/alert.service';
 
     
 @Component({
@@ -14,18 +15,14 @@ import { UserService } from '../user-service/user.service';
 })
 export class RegisterComponent implements OnInit  { 
     
-     user: User = new User(0,"","","","",0,"",0,[],[]);
-     curSkill: Skill;
-      skills : Skill[] = [
-        {id: 1, name: ".Net"},
-        {id: 2, name: "JS"},
-        {id: 3, name: "Java"},
-        {id: 4, name: "Clean"}
-    ]
-     userSkill :Skill = skills[0];
+     model: any = {};
+
+     loading = false;
 
 
-     constructor(private router: Router, private userService : UserService){}
+     constructor(private router: Router, 
+        private userService : UserService, 
+        private alertService: AlertService){}
 
      ngOnInit(){
         
@@ -33,7 +30,16 @@ export class RegisterComponent implements OnInit  {
      }
 
      onClick(){
-        this.userService.CreateUser(this.user);
+         this.loading = true;
+        this.userService.CreateUser(this.model).subscribe(data => {
+            // set success message and pass true paramater to persist the message after redirecting to the login page
+            this.alertService.success('Registration successful', true);
+            this.router.navigate(['/authorise']);
+        },
+        error => {
+            this.alertService.error(error);
+            this.loading = false;
+        });;
         this.router.navigateByUrl('/home');
      }
     
