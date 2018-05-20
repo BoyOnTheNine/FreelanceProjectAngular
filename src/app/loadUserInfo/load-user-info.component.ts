@@ -14,7 +14,7 @@ export class LoadUserComponent implements OnInit{
     @Input() user: User;
     offers: Offer[];
     isEditing = false;
-    isShow = false;
+    isShow : boolean = false;
     constructor(private offerService : OfferService, 
         private userService: UserService, 
         private authService: AuthenticationService) {}
