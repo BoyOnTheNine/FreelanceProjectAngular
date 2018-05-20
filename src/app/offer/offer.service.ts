@@ -42,14 +42,6 @@ export class OfferService implements OnInit{
         this.getAllOffers().subscribe(res => this.allOffers = res);
         this.categoryService.updateCategory();
         return this.allOffers;
-        // this.updateOffers();
-       
-        // return this.allOffers.filter(off => off.category.find(c => c.id == id));
-        // let headers = new Headers({'Authorization':'Bearer ' + this.authService.token
-        // });
-        // let options = new RequestOptions({headers: headers});
-        // return this.http.get('http://localhost:8080/api/v1/offers/' + id, options)
-        // .map((response: Response) =>response.json());
     }
 
     getCatalogNameById(id: Number): string{
