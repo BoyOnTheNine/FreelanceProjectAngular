@@ -7,7 +7,7 @@ export class Offer{
     description: string;
     name: string;
     price: number;
-    user: User;
+    customer: User;
     date: string;
     categories: Category[];
 

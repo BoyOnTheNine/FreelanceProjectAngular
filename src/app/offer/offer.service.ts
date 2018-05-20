@@ -23,9 +23,10 @@ export class OfferService implements OnInit{
         this.getAllOffers();
     }
 
-    getUserOffers(offers : Offer[],user: User) : Offer[] {
-   
-       return offers.filter(ofr => ofr.user.id == user.id);
+    getUserOffers(id: number) : Offer[] {
+        this.getAllOffers().subscribe(data => this.allOffers = data);
+       let newOff = this.allOffers.filter(ofr => ofr.customer.id === id);
+       return newOff;
     }
 
     updateOffers(){

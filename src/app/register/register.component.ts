@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Router} from '@angular/router';
 import { User } from '../shared/user';
-import {skills} from '../fake-storage/fake-Skills';
+
 import {Skill} from '../shared/skill'
 import {FormsModule} from '@angular/forms';
 import { UserService } from '../user-service/user.service';

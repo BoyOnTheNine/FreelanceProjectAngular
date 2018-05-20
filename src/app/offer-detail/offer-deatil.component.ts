@@ -26,7 +26,7 @@ export class OfferDetailComponent implements OnInit  {
 
     findOffer(id: Number){
         this.offer = this.offerService.getOfferById(id);
-        this.user = this.offer.user;
+        this.user = this.offer.customer;
     }
 
 

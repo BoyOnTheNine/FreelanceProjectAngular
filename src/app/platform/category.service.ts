@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Category } from '../shared/category';
-import { categorys } from '../fake-storage/fake-category';
+
 import { Offer } from '../shared/offer';
 import { Http, RequestOptions, Headers, Response } from "@angular/http";
 import { AuthenticationService } from "../authorise/authentication.service";
