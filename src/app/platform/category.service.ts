@@ -12,6 +12,7 @@ import { HttpClient } from "@angular/common/http";
 export class CategoryService {
     allCategories: Category[];
     currOff: Offer[];
+    private serverUrl: string = 'http://localhost:8080/api/v1';
     constructor(
         private http: HttpClient,
         private authService: AuthenticationService
@@ -22,7 +23,24 @@ export class CategoryService {
     }
 
     getCategories(){
-        return this.http.get<Category[]>('http://localhost:8080/api/v1/categories');
+        return this.http.get<Category[]>(this.serverUrl + '/categories');
     }
 
+
+    addCategory(catName: string){
+        let body = {
+            name:catName,     
+        };
+        return this.http.post( this.serverUrl + '/categories', body);
+    }
+
+    
+
+    deleteCategory(id: Number){
+        return this.http.delete(this.serverUrl + '/categories/'+ id);
+    }
+
+
+
 }
+
