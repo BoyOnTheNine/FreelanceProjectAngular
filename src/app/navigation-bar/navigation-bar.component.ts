@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavigationBarComponent implements OnInit {
 
-
+ 
   constructor(private authService: AuthenticationService, private router: Router) {
       
    }

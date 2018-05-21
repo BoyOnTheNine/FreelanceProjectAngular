@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable()
 export class UserService {
 
-    constructor(private http: HttpClient, private authService: AuthenticationService) { }
+    constructor(private http: HttpClient) { }
 
     private readonly serverUrl = 'http://localhost:8080/api/v1';
 

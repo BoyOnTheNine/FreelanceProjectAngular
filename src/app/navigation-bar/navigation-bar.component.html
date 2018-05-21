@@ -24,6 +24,7 @@
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                         <button class="dropdown-item" routerLink="/userInfo">User info</button>
                         <button class="dropdown-item" routerLink="/orders">User orders</button>
+                        <button *ngIf="authService.isAdmin"  class="dropdown-item" routerLink="/admin">Admin Tools</button>
                     </div>
                 </div>
             </li>
