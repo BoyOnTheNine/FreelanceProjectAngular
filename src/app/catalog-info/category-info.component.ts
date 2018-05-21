@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Offer} from '../shared/offer';
 import { OfferService } from '../offer/offer.service';
 import { CategoryService } from '../platform/category.service';
+import { of } from 'rxjs/observable/of';
 
     
 @Component({
@@ -14,7 +15,7 @@ import { CategoryService } from '../platform/category.service';
 
 export class CategoryInfoComponent implements OnInit  { 
     p: Number = 1;
-    
+    offerPerPage: Number;
     objOffers: Offer[];
     categoryName: string;
 
@@ -22,6 +23,10 @@ export class CategoryInfoComponent implements OnInit  {
         private offService: OfferService, 
         private categoryService: CategoryService){}
 
+
+    setPageSize(page: Number){
+        this.offerPerPage = page;
+    }
     ngOnInit(){
        var id = +this.route.snapshot.params['id'];
        this.offService.getAllOffers()

@@ -15,7 +15,7 @@
 </main> -->
 <h2 style="margin: 1rem">Category {{categoryName}}</h2>
 <div class="row card-group">
-    <div class="col-3" *ngFor="let offer of objOffers | paginate: { itemsPerPage: 8, currentPage: p }">
+    <div class="col-3" *ngFor="let offer of objOffers | paginate: { itemsPerPage: offerPerPage, currentPage: p }">
         <div class="card text-center">
             <div class="card-header">{{offer.name}}</div>
             <div class="card-body">
@@ -30,4 +30,14 @@
         </div>
     </div>
 </div>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<div class="row">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Amount of offers per page</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item" (click)="setPageSize(4)">4</button>
+            <button class="dropdown-item" (click)="setPageSize(8)">8</button>
+            <button class="dropdown-item" (click)="setPageSize(12)">12</button>
+        </div>
+    </div>
+</div>
