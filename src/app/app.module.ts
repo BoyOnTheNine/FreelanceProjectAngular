@@ -31,6 +31,7 @@ import { AlertService } from './alert-service/alert.service';
 import { SkillService } from './skill-service/skill.service';
 import { OfferCreateComponent } from './offer-create/offer-create.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -51,6 +52,7 @@ import { OrderListComponent } from './order-list/order-list.component';
             {path: 'offerdetail/:id',component: OfferDetailComponent},
             {path: 'editOffer/:id',component: UserOfferActivityComponent},
             {path: 'register',component: RegisterComponent},
+            {path: 'admin',component: AdminComponent},
             {path: 'createOffer/:id',component: OfferCreateComponent},
             {path: '' ,redirectTo:'authorise' ,pathMatch: 'full'},
             {path:'**',component:NotFoundComponent}
@@ -69,7 +71,8 @@ import { OrderListComponent } from './order-list/order-list.component';
     UserOfferActivityComponent,
     AlertComponent,
     OfferCreateComponent,
-    OrderListComponent
+    OrderListComponent,
+    AdminComponent
     ],
     providers: [
         UserService,
