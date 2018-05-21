@@ -1,17 +1,29 @@
 <main>
-        <div class="col-md-8" >
-                <h2>{{offer.name}} offer Info</h2>
-                <div>
+        <div class="row card-group">
+                        <div class="col-8">
+          <div class="card text-center">
+         <div class="card-header">  <h2>{{offer.name}} offer Info</h2> </div>
+            <div class="card-body">
                         <p>Offer number: {{offer.id}}</p>
                         <p> name: {{offer.name}}</p>
                         <p> price: {{offer.price}}</p>
                         <p> date: {{offer.date}}</p>
                         <p> description: {{offer.description}}</p>
                 </div>
+         <button class="btn btn-primary"  (click)="onShow()" >Add to offer List</button>
         </div>
-        <div class="col-md-6">
-                <h2>{{user.login}} user Info</h2>
-                <div>
+        </div>
+        </div>
+
+         <div>
+        <button class="btn btn-primary"  (click)="onShow()" >Show customer info</button>
+         </div>
+
+         <div class="row card-group">
+        <div  class="col-8" *ngIf="isInfo" >
+         <div class="card text-center">
+          <div class="card-header"> <h2>{{user.login}} user Info</h2> </div> 
+          <div class="card-body">
                         <p> id: {{user.id}}</p>
                         <p> name: {{user.firstName}}</p>
                         <p> last Name: {{user.lastName}}</p>
@@ -19,6 +31,8 @@
                         <p> country: {{user.country}}</p>
                         <p> rating: {{user.rating}}</p>
                 </div>
+                </div>
         </div>
+         </div>
 
 </main>
