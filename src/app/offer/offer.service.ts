@@ -55,6 +55,7 @@ export class OfferService implements OnInit{
           return this.allOffers.find(off => off.id == id);
     }
 
+
     uppdateOffer(offer : Offer){
         let body = {
             name:offer.name, 
