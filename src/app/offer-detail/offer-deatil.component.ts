@@ -62,9 +62,8 @@ export class OfferDetailComponent implements OnInit  {
              let workers = new Array<User>();
              workers.push(this.user);
             this.order.workers = workers;
-              this.ordService.addOrder(this.order).subscribe(o => this.router.navigateByUrl('/userInfo')  );
+            this.ordService.addOrder(this.order).subscribe(o => this.router.navigateByUrl('/userInfo')  );
         
-
         }
   
                
