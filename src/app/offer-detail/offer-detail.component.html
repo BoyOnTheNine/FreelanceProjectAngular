@@ -94,19 +94,33 @@
                         <td>Country</td>
                         <td>{{user.country}}</td>
                     </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td>
+                            <ng-template #t let-fill="fill">
+                                <span class="star" [class.full]="fill === 100">
+                                    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                                </span>
+                            </ng-template>
+                            <ngb-rating [(rate)]="user.rating" [starTemplate]="t" [readonly]="true" max="5">
+                            </ngb-rating>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div class="card-footer">
-            <div class="row">
+        <!-- <div class="row">
+                <h3>User rating</h3>
                 <ng-template #t let-fill="fill">
                     <span class="star" [class.full]="fill === 100">
                         <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
                     </span>
                 </ng-template>
                 <ngb-rating [(rate)]="user.rating" [starTemplate]="t" [readonly]="true" max="5">
-                </ngb-rating>
+                </ngb-rating>                
             </div>
-        </div>
+        <div class="card-footer">
+            
+        </div> -->
     </div>
 </div>
