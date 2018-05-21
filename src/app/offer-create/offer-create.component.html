@@ -1,44 +1,30 @@
 <form class="container col-md-4">
-  <div class="form-group">
-      <label for="firstName">Offer Name</label>
-      <input type="text"  class="form-control" name="name" [(ngModel)]="offer.name" />
-  </div>
-  <div class="form-group">
-      <label for="firstName">Offer Description</label>
-      <input type="text"  class="form-control" name="description" [(ngModel)]="offer.description" />
-  </div>
-  <div class="form-group">
-      <label for="login">Date</label>
-      <input type="text" class="form-control" name="date" [(ngModel)]="offer.date" />
-  </div>
-  <div class="form-group">
-      <label for="phone">Price</label>
-      <input type="text"  class="form-control" name="price" [(ngModel)]="offer.price"  />
-  </div>
-  <div class="form-group">
-    <label for="phone">Categories</label>
-    <!-- <select class="form-control" name="categoryies" [(ngModel)]="selectedCategory"  class="form-control" >
-      <option *ngFor="let cat of categories">{{cat.name}}</option>
-    </select> -->
-    <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-outline-primary" id="dropdownBasic1" [(ngModel)]="selectedCategory" ngbDropdownToggle>{{selectedCategory}}</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item" *ngFor="let category of categories" (click)="changeSelectedCategory(category.name)" >{{category.name}}</button>
+    <div class="form-group">
+        <label for="firstName">Offer Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="offer.name" />
+    </div>
+    <div class="form-group">
+        <label for="firstName">Offer Description</label>
+        <input type="text" class="form-control" name="description" [(ngModel)]="offer.description" />
+    </div>
+    <div class="form-group">
+        <label for="login">Date</label>
+        <input type="text" class="form-control" name="date" [(ngModel)]="offer.date" />
+    </div>
+    <div class="form-group">
+        <label for="phone">Price</label>
+        <input type="text" class="form-control" name="price" [(ngModel)]="offer.price" />
+    </div>
+    <div class="form-group">
+        <label for="phone">Categories</label>
+        <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" [(ngModel)]="selectedCategory" ngbDropdownToggle>{{selectedCategory}}</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" *ngFor="let category of categories" (click)="changeSelectedCategory(category.name)">{{category.name}}</button>
+            </div>
         </div>
     </div>
-</div>
-  <div>
-
-  <button class="btn btn-primary" (click)="onCreate()" >Create Offer</button>
-  </div>
+    <div>
+        <button class="btn btn-primary" (click)="onCreate()">Create Offer</button>
+    </div>
 </form>
-<div>
-    <p>d</p>
-    <p>{{offer.price}}</p>
-    <p>{{offer.name}}</p>
-    <p>{{offer.description}}</p>
-    <p>{{offer.date}}</p>
-    <p>{{offer.categories.name}}</p>
-    <p>{{offer.categories}}</p>
-
-</div>
