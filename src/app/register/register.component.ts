@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit  {
         
      }
 
-     onClick(){
+     register(){
          this.loading = true;
         this.userService.CreateUser(this.model).subscribe(data => {
             // set success message and pass true paramater to persist the message after redirecting to the login page
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit  {
             this.router.navigate(['/authorise']);
         },
         error => {
-            this.alertService.error(error);
+            this.alertService.error("Registration error");
             this.loading = false;
         });
         this.router.navigateByUrl('/home');
