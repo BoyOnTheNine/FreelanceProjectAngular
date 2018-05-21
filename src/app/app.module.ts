@@ -30,6 +30,7 @@ import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert-service/alert.service';
 import { SkillService } from './skill-service/skill.service';
 import { OfferCreateComponent } from './offer-create/offer-create.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 
 
@@ -42,6 +43,7 @@ import { OfferCreateComponent } from './offer-create/offer-create.component';
         HttpClientModule,
         RouterModule.forRoot([
             {path: 'home',component: HomeComponent},
+            {path: 'orders', component: OrderListComponent},
             {path: 'authorise', component: LoginComponent},
             {path: 'userInfo', component: LoadUserComponent, canActivate:[AuthGuard]},
             {path: 'catalog',component: CatalogComponent, canActivate:[AuthGuard]},
@@ -66,7 +68,8 @@ import { OfferCreateComponent } from './offer-create/offer-create.component';
     NavigationBarComponent,
     UserOfferActivityComponent,
     AlertComponent,
-    OfferCreateComponent
+    OfferCreateComponent,
+    OrderListComponent
     ],
     providers: [
         UserService,
