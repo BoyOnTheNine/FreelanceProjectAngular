@@ -15,7 +15,7 @@ import { of } from 'rxjs/observable/of';
 
 export class CategoryInfoComponent implements OnInit  { 
     p: Number = 1;
-    offerPerPage: Number;
+    offerPerPage: Number = 8;
     objOffers: Offer[];
     categoryName: string;
 
