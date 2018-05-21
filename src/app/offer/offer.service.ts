@@ -3,7 +3,6 @@ import { Offer } from "../shared/offer";
 import { User } from "../shared/user";
 import {CategoryService} from '../platform/category.service';
 import { Category } from "../shared/category";
-//import { Http, Headers, RequestOptions, Response} from "@angular/http";
 import { AuthenticationService } from "../authorise/authentication.service";
 import { Observable }     from 'rxjs/Observable';
 import { HttpClient } from "@angular/common/http";
@@ -80,6 +79,12 @@ export class OfferService implements OnInit{
         return this.http.post( this.offerUrl + '/offers', body);
     }
 
+    deleteSelectedOffers(arr:Number[]){
+        let body = {
+            array:arr
+        }
+        return this.http.post(this.offerUrl + "/offers/array", body);
+    }
     deleteOffer(offer: Offer){
       
         return this.http.delete( this.offerUrl + "/offers/"+ offer.id);

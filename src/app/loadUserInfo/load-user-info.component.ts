@@ -7,6 +7,7 @@ import { UserService } from '../user-service/user.service';
 import { AuthenticationService } from '../authorise/authentication.service';
 import { AlertService } from '../alert-service/alert.service';
 import { SkillService } from '../skill-service/skill.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: "load",
@@ -19,6 +20,7 @@ export class LoadUserComponent implements OnInit {
     addedSkill: string;
     allSkils: Skill[];
     selectedSkill: string;
+    delArray: Number[] = [];
     isEditing = false;
     isShow: boolean = false;
     isSkills: boolean = false;
@@ -26,7 +28,8 @@ export class LoadUserComponent implements OnInit {
         private userService: UserService,
         private authService: AuthenticationService,
         private skillService: SkillService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+    private router: Router) { }
 
     ngOnInit() {
         this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
@@ -38,6 +41,12 @@ export class LoadUserComponent implements OnInit {
 
     changeSelectedSkill(newSkill: string) {
         this.selectedSkill = newSkill;
+    }
+
+    deleteSelectedOffers(){
+        this.offerService.deleteSelectedOffers(this.delArray).subscribe(o => {
+            this.alertService.success("Selected offers successfully deleted!") 
+            this.router.navigateByUrl('/home'); });
     }
 
     onClick() {
@@ -54,17 +63,6 @@ export class LoadUserComponent implements OnInit {
     addSkill() {
         let skill = new Skill();
         skill.name = this.selectedSkill;
-        // this.skillService.addSkill(skill.name).subscribe(data => {
-        //     this.skillService.getAllSkills().subscribe(res => {this.allSkils = res;
-        //         this.userService.updateUserSkills(this.allSkils, this.user.id).subscribe(hell =>{
-        //             this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
-        //                 this.user = data;
-        //                 console.log('this.user = ' + this.user)});  
-        //         });
-
-        //         this.addedSkill = null;
-        //     });
-        // });
         let skillArr = new Array<Skill>();
         skillArr.push(this.allSkils.find(exp => exp.name == skill.name));
         this.userService.updateUserSkills(skillArr, this.user.id).subscribe(hell => {
@@ -75,6 +73,16 @@ export class LoadUserComponent implements OnInit {
         });
 
         this.addedSkill = null;
+    }
+
+    checkbox(id: Number) {
+        if (this.delArray.find(x => x == id)) {
+            this.delArray.splice(this.delArray.indexOf(id), 1)
+        }
+        else {
+            this.delArray.push(id);
+        }
+        console.log(this.delArray);
     }
 
     saveChanges() {

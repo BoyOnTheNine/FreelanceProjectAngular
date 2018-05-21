@@ -1,7 +1,7 @@
 .star {
-    position: relative;
+    position: center;
     display: inline-block;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #d3d3d3;
   }
   .full {
@@ -13,14 +13,3 @@
     overflow: hidden;
     color: blue;
   }
-
-.card {
-    width: 19rem;
-    height: 19rem;
-    margin-bottom: 2rem;
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
-}
