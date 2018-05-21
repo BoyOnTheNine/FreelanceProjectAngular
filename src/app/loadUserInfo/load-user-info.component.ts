@@ -45,7 +45,7 @@ export class LoadUserComponent implements OnInit {
 
     deleteSelectedOffers(){
         this.offerService.deleteSelectedOffers(this.delArray).subscribe(o => {
-            this.alertService.success("Selected offers successfully deleted!") 
+            this.alertService.success("Selected offers successfully deleted!"); 
             this.router.navigateByUrl('/home'); });
     }
 
@@ -63,9 +63,11 @@ export class LoadUserComponent implements OnInit {
     addSkill() {
         let skill = new Skill();
         skill.name = this.selectedSkill;
-        let skillArr = new Array<Skill>();
-        skillArr.push(this.allSkils.find(exp => exp.name == skill.name));
-        this.userService.updateUserSkills(skillArr, this.user.id).subscribe(hell => {
+        skill.id = this.allSkils.find(exp => exp.name == skill.name).id;
+        //let skillArr = new Array<Skill>();
+        //skillArr.push(this.allSkils.find(exp => exp.name == skill.name));
+        this.user.skills.push(skill);
+        this.userService.updateUserSkills(this.user.skills, this.user.id).subscribe(hell => {
             this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
                 this.user = data;
                 console.log('this.user = ' + this.user)
