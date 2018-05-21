@@ -51,7 +51,7 @@
             <div ngbDropdown class="d-inline-block">
                 <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedSkill}}</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button class="dropdown-item" *ngFor="let skill of allSkils" (click)="changeSelectedSkill(skill.name)" >{{skill.name}}</button>
+                    <button class="dropdown-item" *ngFor="let skill of allSkils" (click)="changeSelectedSkill(skill.name)">{{skill.name}}</button>
                 </div>
             </div>
             <button class="btn btn-primary" (click)="addSkill()">Change skill</button>
@@ -72,9 +72,14 @@
                     <p>Price: {{offer.price}}</p>
                     <p>Date: {{offer.date}}</p>
                 </div>
-                <button class="btn btn-primary" [routerLink]="['/editOffer',offer.id]">Edit offer</button>
+                <div class="card-footer">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" [routerLink]="['/editOffer',offer.id]">Edit offer</button>
+                        <input type="checkbox" (change)="checkbox(offer.id)" >                        
+                    </div>
+                </div>
             </div>
-           
-        </div>
+        </div>        
     </div>
+    <button class="btn btn-warning"(click)="deleteSelectedOffers()" >Delete selected offers</button>
 </div>

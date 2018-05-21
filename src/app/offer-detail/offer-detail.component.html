@@ -1,38 +1,126 @@
-<main>
-        <div class="row card-group">
-                        <div class="col-8">
-          <div class="card text-center">
-         <div class="card-header">  <h2>{{offer.name}} offer Info</h2> </div>
-            <div class="card-body">
-                        <p>Offer number: {{offer.id}}</p>
-                        <p> name: {{offer.name}}</p>
-                        <p> price: {{offer.price}}</p>
-                        <p> date: {{offer.date}}</p>
-                        <p> description: {{offer.description}}</p>
+<!-- <main>
+    <div class="row card-group">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h2>{{offer.name}} offer Info</h2>
                 </div>
-         <button class="btn btn-primary"(click)="onAdd()" >Add to offer List</button>
+         <button class="btn btn-primary"  (click)="onShow()" >Add to offer List</button>
         </div>
-        </div>
-        </div>
+    </div>
 
-         <div>
-        <button class="btn btn-primary"  (click)="onShow()" >Show customer info</button>
-         </div>
+    <div>
+        <button class="btn btn-primary" (click)="onShow()">Show customer info</button>
+    </div>
 
-         <div class="row card-group">
-        <div  class="col-8" *ngIf="isInfo" >
-         <div class="card text-center">
-          <div class="card-header"> <h2>{{user.login}} user Info</h2> </div> 
-          <div class="card-body">
-                        <p> id: {{user.id}}</p>
-                        <p> name: {{user.firstName}}</p>
-                        <p> last Name: {{user.lastName}}</p>
-                        <p> phone: {{user.phoneNumber}}</p>
-                        <p> country: {{user.country}}</p>
-                        <p> rating: {{user.rating}}</p>
+    <div class="row card-group">
+        <div class="col-md-4" *ngIf="isInfo">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h2>{{user.login}} user Info</h2>
                 </div>
+                <div class="card-body">
+                    <p> id: {{user.id}}</p>
+                    <p> name: {{user.firstName}}</p>
+                    <p> last Name: {{user.lastName}}</p>
+                    <p> phone: {{user.phoneNumber}}</p>
+                    <p> country: {{user.country}}</p>
+                    <p> rating: {{user.rating}}</p>
                 </div>
+            </div>
         </div>
-         </div>
+    </div>
 
-</main>
+</main> -->
+<div class="card-deck">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{offer.name}} offer Info</h2>
+        </div>
+        <div class="card-body">
+            <table class="table" style="font-weight: bold">
+                <tbody>
+                    <tr>
+                        <td>Offer number</td>
+                        <td>{{offer.id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{offer.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{offer.description}}</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>{{offer.price}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>{{offer.date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary" (click)="onAdd()">Add to offer List</button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>{{user.login}} user Info</h2>
+        </div>
+        <div class="card-body">
+            <table class="table" style="font-weight: bold">
+                <tbody>
+                    <tr>
+                        <td>User ID</td>
+                        <td>{{user.id}}</td>
+                    </tr>
+                    <tr>
+                        <td>First name</td>
+                        <td>{{user.firstName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Last name</td>
+                        <td>{{user.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>{{user.phoneNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td>Country</td>
+                        <td>{{user.country}}</td>
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td>
+                            <ng-template #t let-fill="fill">
+                                <span class="star" [class.full]="fill === 100">
+                                    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                                </span>
+                            </ng-template>
+                            <ngb-rating [(rate)]="user.rating" [starTemplate]="t" [readonly]="true" max="5">
+                            </ngb-rating>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <div class="row">
+                <h3>User rating</h3>
+                <ng-template #t let-fill="fill">
+                    <span class="star" [class.full]="fill === 100">
+                        <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                    </span>
+                </ng-template>
+                <ngb-rating [(rate)]="user.rating" [starTemplate]="t" [readonly]="true" max="5">
+                </ngb-rating>                
+            </div>
+        <div class="card-footer">
+            
+        </div> -->
+    </div>
+</div>

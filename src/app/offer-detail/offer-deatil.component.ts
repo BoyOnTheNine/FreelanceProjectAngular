@@ -11,7 +11,8 @@ import { AlertService } from '../alert-service/alert.service';
     
 @Component({
     selector: 'offer-detail',
-    templateUrl: 'offer-detail.component.html'
+    templateUrl: 'offer-detail.component.html',
+    styleUrls: ['./offer-detail.component.css']
   
 })
 export class OfferDetailComponent implements OnInit  { 
