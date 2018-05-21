@@ -20,10 +20,7 @@ export class SkillService {
         return this.http.post(this.serverUrl + '/skills', body);
     }
 
-    updateSkill() {
-
-    }
-    getSkillById() {
-
+    deleteSkill(id:Number) {
+        return this.http.delete( this.serverUrl + '/skills/'+ id);
     }
 }
