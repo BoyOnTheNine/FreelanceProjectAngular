@@ -25,18 +25,4 @@ export class CategoryService {
         return this.http.get<Category[]>('http://localhost:8080/api/v1/categories');
     }
 
-    private countOffersForCategory() {
-
-        // this.offServ.getAllOffers().subscribe(currOff => {
-        //     this.currOff = currOff;
-        //     console.log('this.currOff = ' + this.currOff);
-        // });
-        // for (let category of this.allCategories) {
-        //     category.offersCount = 0;
-        //     for (let offer of this.currOff) {
-        //         let curCat = offer.categories.filter(c => c.id == category.id)
-        //         category.offersCount += curCat.length;
-        //     }
-        // }
-    }
 }
