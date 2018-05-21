@@ -44,7 +44,9 @@ export class LoadUserComponent implements OnInit {
     }
 
     deleteSelectedOffers(){
-        this.offerService.deleteSelectedOffers(this.delArray).subscribe(o => { this.router.navigateByUrl('/userInfo'); });
+        this.offerService.deleteSelectedOffers(this.delArray).subscribe(o => {
+            this.alertService.success("Selected offers successfully deleted!") 
+            this.router.navigateByUrl('/home'); });
     }
 
     onClick() {

@@ -83,7 +83,7 @@ export class OfferService implements OnInit{
         let body = {
             array:arr
         }
-        return this.http.request('DELETE', this.offerUrl + "/offers", { body: body }); 
+        return this.http.post(this.offerUrl + "/offers/array", body);
     }
     deleteOffer(offer: Offer){
       
