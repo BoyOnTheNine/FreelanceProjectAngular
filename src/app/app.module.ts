@@ -86,7 +86,8 @@ import { AdminComponent } from './admin/admin.component';
         SkillService,
         AuthenticationService, 
         OfferService, 
-        CategoryService],
+        CategoryService,
+          ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
