@@ -15,6 +15,7 @@ export class OfferDetailComponent implements OnInit  {
     
      user: User;
      offer: Offer;
+     isInfo: boolean = false
 
     constructor(private route: ActivatedRoute, private offerService: OfferService){}
 
@@ -27,6 +28,10 @@ export class OfferDetailComponent implements OnInit  {
     findOffer(id: Number){
         this.offer = this.offerService.getOfferById(id);
         this.user = this.offer.customer;
+    }
+    
+    onShow(){
+        this.isInfo = !this.isInfo;
     }
 
 
