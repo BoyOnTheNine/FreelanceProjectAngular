@@ -3,11 +3,9 @@ import {Offer}from './offer';
 
 export class UserOrder{
 
-    id : number;
+    id  : number;
     workers: User[];
-    offer: Offer;
-
-
+    offer: Offer
 
 }
 

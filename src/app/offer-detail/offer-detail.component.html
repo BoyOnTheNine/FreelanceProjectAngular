@@ -5,15 +5,7 @@
                 <div class="card-header">
                     <h2>{{offer.name}} offer Info</h2>
                 </div>
-                <div class="card-body">
-                    <p>Offer number: {{offer.id}}</p>
-                    <p> name: {{offer.name}}</p>
-                    <p> price: {{offer.price}}</p>
-                    <p> date: {{offer.date}}</p>
-                    <p> description: {{offer.description}}</p>
-                </div>
-                <button class="btn btn-primary" (click)="onShow()">Add to offer List</button>
-            </div>
+         <button class="btn btn-primary"  (click)="onShow()" >Add to offer List</button>
         </div>
     </div>
 
@@ -72,7 +64,7 @@
             </table>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary" (click)="onShow()">Add to offer List</button>
+            <button class="btn btn-primary" (click)="onAdd()">Add to offer List</button>
         </div>
     </div>
     <div class="card">

@@ -32,6 +32,7 @@ import { SkillService } from './skill-service/skill.service';
 import { OfferCreateComponent } from './offer-create/offer-create.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { AdminComponent } from './admin/admin.component';
+import { OrderService } from './order-list/order.service';
 
 
 
@@ -87,6 +88,7 @@ import { AdminComponent } from './admin/admin.component';
         AuthenticationService, 
         OfferService, 
         CategoryService,
+        OrderService
           ],
     bootstrap: [ AppComponent ]
 })
