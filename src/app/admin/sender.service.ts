@@ -15,8 +15,8 @@ export class SenderService {
   sendAll( subj: string, text: string){
     let body= {
         subject:subj,
-        tetx:text,
-        fromEmail:"freelanceplatformspp@gmail.com"
+        text:text,
+        fromEmail:'freelanceplatformspp@gmail.com'
       }
     return this.http.put(this.serverUrl + '/sendAll',body);
 
@@ -26,7 +26,7 @@ export class SenderService {
 
     let body= {
         subject:subj,
-        tetx:text,
+        text:text,
         fromEmail:"freelanceplatformspp@gmail.com",
         toEmail:to
     }

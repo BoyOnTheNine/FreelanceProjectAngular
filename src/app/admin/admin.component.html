@@ -56,7 +56,7 @@
        
   <div class="form-group">
   <label for="password">Text</label>
-  <textarea   class="form-control" name="2" [(ngModel)]="mailText" ></textarea>
+  <textarea  rows="15"  class="form-control" name="2" [(ngModel)]="mailText" ></textarea>
   </div>
   <div>
   <button class="btn btn-primary" (click)=" onSend()">Send</button>
@@ -64,11 +64,6 @@
   
 </form>
 
-<div>
-  {{mailText}}
-  {{receiver}}
-  {{subject}}
-</div>
 
 
 

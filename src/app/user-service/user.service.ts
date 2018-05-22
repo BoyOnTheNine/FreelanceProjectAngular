@@ -17,7 +17,7 @@ export class UserService {
     private user: User;
 
     GetUserByLogin(login: string){
-        return this.http.get<User>(this.serverUrl + "/user/login/" + login);
+        return this.http.get<User>(this.serverUrl + "/users/login/" + login);
     }
     
     GetUserById(id: Number) {
