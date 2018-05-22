@@ -33,11 +33,11 @@ import { OfferCreateComponent } from './offer-create/offer-create.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { AdminComponent } from './admin/admin.component';
 import { OrderService } from './order-list/order.service';
-<<<<<<< HEAD
+
 import { SenderService } from './admin/sender.service';
-=======
+
 import { DocumentService } from './order-list/document.service';
->>>>>>> 13
+
 
 
 
@@ -94,11 +94,8 @@ import { DocumentService } from './order-list/document.service';
         OfferService, 
         CategoryService,
         OrderService,
-<<<<<<< HEAD
-        SenderService
-=======
+        SenderService,
         DocumentService
->>>>>>> 13
           ],
     bootstrap: [ AppComponent ]
 })
