@@ -1,3 +1,30 @@
-<p>
-  order-list works!
-</p>
+<h2 style="margin: 1rem">My offers:</h2>
+<div class="row card-group" >
+  <div  class="col-8" *ngFor="let order of orders" >
+   <div class="card text-center">
+    <div class="card-header"> <h2>{{order.offer.name}} </h2> </div> 
+    <div class="card-body">
+                  <p> Number: {{order.id}}</p>
+                  <p> description: {{order.offer.description}}</p>
+                  <p> last Name: {{order.offer.date}}</p>
+                  <p> phone: {{order.offer.date}}</p>
+                  <p>Customer Name: {{order.workers[0].login}}</p>
+                  <p>Customer Name: {{order.workers[0].email}}</p>
+                  <p>Customer Name: {{order.workers[0].phoneNumber}}</p>
+                  
+          </div>
+       
+          </div>
+          <button class="btn btn-primary"  (click)="onDelete(order.id)" >Delete order</button>
+          <button class="btn btn-primary"  (click)="onLoad(order.id)" >Download Info</button>
+          <select [(ngModel)]="format" >
+            <option>pdf</option>
+            <option>csv</option>
+            <option>xls</option>
+          </select>
+  </div>
+   </div>
+
+   <div>
+     {{format}}
+   </div>

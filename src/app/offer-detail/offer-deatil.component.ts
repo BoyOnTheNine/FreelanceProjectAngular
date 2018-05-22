@@ -7,6 +7,8 @@ import { User } from '../shared/user';
 import { OrderService } from '../order-list/order.service';
 import { UserOrder } from '../shared/userOrder';
 import { AlertService } from '../alert-service/alert.service';
+import { AuthenticationService } from '../authorise/authentication.service';
+import { UserService } from '../user-service/user.service';
 
     
 @Component({
@@ -21,19 +23,21 @@ export class OfferDetailComponent implements OnInit  {
      offer: Offer;
      isInfo: boolean = false;
      order: UserOrder;
+   
 
-    constructor(private route: ActivatedRoute, private offerService: OfferService,private ordService: OrderService,private router: Router,private alert: AlertService){}
+    constructor(private route: ActivatedRoute, private offerService: OfferService,private ordService: OrderService,private router: Router,private alert: AlertService,
+                private autServ: AuthenticationService, private usrServ: UserService){}
 
     ngOnInit(){
        var id = +this.route.snapshot.params['id'];
        this.findOffer(id);
-     
+       this.usrServ.GetUserByLogin(this.autServ.loginString).subscribe(res => this.user = res);
     
     }
 
     findOffer(id: Number){
         this.offer = this.offerService.getOfferById(id);
-        this.user = this.offer.customer;
+        
     }
     
     onShow(){
@@ -58,14 +62,13 @@ export class OfferDetailComponent implements OnInit  {
              } */
 
               
-             this.order = new UserOrder;
-             this.order.offer = this.offer;
-             let workers = new Array<User>();
-             workers.push(this.user);
+            this.order = new UserOrder;
+            this.order.offer = this.offer;
+            let workers = new Array<User>();
+            workers.push(this.user);
             this.order.workers = workers;
-              this.ordService.addOrder(this.order).subscribe(o => this.router.navigateByUrl('/userInfo')  );
+            this.ordService.addOrder(this.order).subscribe(o => this.router.navigateByUrl('/userInfo')  );
         
-
         }
   
                
