@@ -57,4 +57,8 @@ export class UserService {
         };
         return this.http.put(this.serverUrl + "/users/" + id, body);
     }
+    
+    deleteUserSkill(userId: Number, skillId: Number){
+        return this.http.delete(this.serverUrl + "/users/"+ userId + "/" + skillId);
+    }
 }

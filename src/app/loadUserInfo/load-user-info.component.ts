@@ -29,7 +29,7 @@ export class LoadUserComponent implements OnInit {
         private authService: AuthenticationService,
         private skillService: SkillService,
         private alertService: AlertService,
-    private router: Router) { }
+        private router: Router) { }
 
     ngOnInit() {
         this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
@@ -43,10 +43,11 @@ export class LoadUserComponent implements OnInit {
         this.selectedSkill = newSkill;
     }
 
-    deleteSelectedOffers(){
+    deleteSelectedOffers() {
         this.offerService.deleteSelectedOffers(this.delArray).subscribe(o => {
-            this.alertService.success("Selected offers successfully deleted!") 
-            this.router.navigateByUrl('/home'); });
+            this.alertService.success("Selected offers successfully deleted!");
+            this.router.navigateByUrl('/home');
+        });
     }
 
     onClick() {
@@ -63,9 +64,10 @@ export class LoadUserComponent implements OnInit {
     addSkill() {
         let skill = new Skill();
         skill.name = this.selectedSkill;
-        let skillArr = new Array<Skill>();
-        skillArr.push(this.allSkils.find(exp => exp.name == skill.name));
-        this.userService.updateUserSkills(skillArr, this.user.id).subscribe(hell => {
+        skill.id = this.allSkils.find(exp => exp.name == skill.name).id;
+        // let skillArr = new Array<Skill>();
+        this.user.skills.push(skill);
+        this.userService.updateUserSkills(this.user.skills, this.user.id).subscribe(hell => {
             this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
                 this.user = data;
                 console.log('this.user = ' + this.user)
@@ -73,6 +75,25 @@ export class LoadUserComponent implements OnInit {
         });
 
         this.addedSkill = null;
+    }
+
+    deleteSkill() {
+        let skill = new Skill();
+        skill.name = this.selectedSkill;
+        skill.id = this.allSkils.find(exp => exp.name == skill.name).id;
+        this.userService.deleteUserSkill(this.user.id, skill.id).subscribe(data => {
+            this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
+                this.user = data;
+                console.log('this.user = ' + this.user)
+            });
+        })
+        // this.user.skills.splice(this.user.skills.indexOf(skill), 1);
+        // this.userService.updateUserSkills(this.user.skills, this.user.id).subscribe(hell => {
+        //     this.userService.GetUserByLogin(this.authService.loginString).subscribe(data => {
+        //         this.user = data;
+        //         console.log('this.user = ' + this.user)
+        //     });
+        // });
     }
 
     checkbox(id: Number) {
