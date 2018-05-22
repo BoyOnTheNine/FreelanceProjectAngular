@@ -24,6 +24,11 @@ export class UserService {
         return this.http.get<User>(this.serverUrl + '/users/' + id)
     }
 
+
+    GetAll(){
+        return this.http.get<User[]>(this.serverUrl + '/users')
+    }
+
     UpdateUser(user: User){
 
         let body = {

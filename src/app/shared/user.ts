@@ -11,6 +11,7 @@ export class User{
        public country : string,
        public rating : number,
        public login : string,
+       public email: string,
        public hash : number,
        public roles : Role[],
        public skills : Skill[]){}

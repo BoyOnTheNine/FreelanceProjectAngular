@@ -2,6 +2,7 @@
  <form name="form" >
       <button class="btn btn-primary" (click)=" onOpenCategory()">Edit Category</button>
       <button class="btn btn-primary" (click)=" onOpenSkill()">Edit Skills</button>
+      <button class="btn btn-primary" (click)=" onOpenSend()">Sending E-mails</button>
 </form>
 <form name="category" *ngIf="isCategory" class="container col-md-4" >
     <div class="form-group">
@@ -40,9 +41,34 @@
         </div>
       </div>
 </form>
+<form name="skills" *ngIf="isSend" class="container col-md-4">
+    <div class="form-group">
+        <label for="phone">Choose user</label>
+        <select class="form-control" name="categoryies" [(ngModel)]="receiver"  class="form-control" >
+          <option>Broadcast</option>
+          <option *ngFor="let user of users" [value]="user.email">{{user.login}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label for="password">Subject</label>
+          <input type="text"  class="form-control" name="2" [(ngModel)]="subject" />
+      </div>
+       
+  <div class="form-group">
+  <label for="password">Text</label>
+  <textarea   class="form-control" name="2" [(ngModel)]="mailText" ></textarea>
+  </div>
+  <div>
+  <button class="btn btn-primary" (click)=" onSend()">Send</button>
+  </div>
+  
+</form>
 
 <div>
-{{curSkill}}
-
+  {{mailText}}
+  {{receiver}}
+  {{subject}}
 </div>
+
+
 
