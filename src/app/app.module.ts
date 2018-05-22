@@ -33,6 +33,7 @@ import { OfferCreateComponent } from './offer-create/offer-create.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { AdminComponent } from './admin/admin.component';
 import { OrderService } from './order-list/order.service';
+import { DocumentService } from './order-list/document.service';
 
 
 
@@ -88,7 +89,8 @@ import { OrderService } from './order-list/order.service';
         AuthenticationService, 
         OfferService, 
         CategoryService,
-        OrderService
+        OrderService,
+        DocumentService
           ],
     bootstrap: [ AppComponent ]
 })

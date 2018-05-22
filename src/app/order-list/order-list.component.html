@@ -15,12 +15,16 @@
           </div>
        
           </div>
-          <button class="btn btn-primary"  (click)="onShow()" >Delete order</button>
-          <button class="btn btn-primary"  (click)="onShow()" >Download Info</button>
-          <select>
-            <option>PDF</option>
-            <option>CSV</option>
-            <option>XLS</option>
+          <button class="btn btn-primary"  (click)="onDelete(order.id)" >Delete order</button>
+          <button class="btn btn-primary"  (click)="onLoad(order.id)" >Download Info</button>
+          <select [(ngModel)]="format" >
+            <option>pdf</option>
+            <option>csv</option>
+            <option>xls</option>
           </select>
   </div>
+   </div>
+
+   <div>
+     {{format}}
    </div>
